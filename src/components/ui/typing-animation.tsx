@@ -1,8 +1,9 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
 
-const titles = ['Graphic Designer', 'Developer', 'Innovator'];
+const titles = ['Graphic Designer', 'Developer'];
 
 const TypingAnimation = () => {
   const [index, setIndex] = useState(0);
