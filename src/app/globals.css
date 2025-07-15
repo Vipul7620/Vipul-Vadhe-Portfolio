@@ -30,6 +30,29 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
+  .light {
+    --background: 30 50% 98%; /* Very light, warm off-white */
+    --foreground: 25 20% 15%; /* Dark, warm gray for text */
+    --card: 30 50% 94%; /* Slightly darker warm off-white */
+    --card-foreground: 25 20% 15%;
+    --popover: 30 50% 98%;
+    --popover-foreground: 25 20% 15%;
+    --primary: 25 20% 15%; /* Dark text for primary elements */
+    --primary-foreground: 30 50% 98%; /* Light text on primary bg */
+    --secondary: 30 30% 90%; /* Light gray */
+    --secondary-foreground: 25 20% 15%;
+    --muted: 30 30% 90%;
+    --muted-foreground: 25 20% 45%; /* Muted text */
+    --accent: 25 85% 60%; /* Vibrant Orange */
+    --accent-foreground: 30 50% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 20% 85%;
+    --input: 30 20% 88%;
+    --ring: 25 85% 65%;
+  }
+
   .dark {
     --background: 224 71% 4%; /* Near black/dark indigo */
     --foreground: 223 60% 95%; /* Light gray-blue */

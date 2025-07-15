@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Sparkle } from 'lucide-react';
+import { Menu, X, Sparkle, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
+import { useTheme } from 'next-themes';
 
 const navItems = [
   { name: 'About Me', href: '#about' },
@@ -20,7 +21,10 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSparkleClicked, setIsSparkleClicked] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,7 +46,8 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleSparkleClick = () => {
+  const handleThemeToggle = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
     setIsSparkleClicked(true);
     setTimeout(() => {
         setIsSparkleClicked(false);
@@ -81,8 +86,14 @@ const Header = () => {
           
           <div className="hidden md:flex items-center gap-2">
             <div className="w-px h-6 bg-primary/30" />
-             <button onClick={handleSparkleClick} className="focus:outline-none">
-              <Sparkle className={cn("w-5 h-5 text-accent transition-transform", isSparkleClicked && "animate-pop-rotate")} />
+             <button onClick={handleThemeToggle} className="focus:outline-none">
+              {mounted && (
+                theme === 'dark' ? (
+                  <Sun className={cn("w-5 h-5 text-accent transition-transform", isSparkleClicked && "animate-pop-rotate")} />
+                ) : (
+                  <Moon className={cn("w-5 h-5 text-accent transition-transform", isSparkleClicked && "animate-pop-rotate")} />
+                )
+              )}
             </button>
           </div>
 
@@ -109,6 +120,17 @@ const Header = () => {
                       </Link>
                     </SheetClose>
                   ))}
+                  <div className="flex justify-center">
+                    <button onClick={handleThemeToggle} className="focus:outline-none p-2">
+                      {mounted && (
+                        theme === 'dark' ? (
+                          <Sun className={cn("w-6 h-6 text-accent transition-transform", isSparkleClicked && "animate-pop-rotate")} />
+                        ) : (
+                          <Moon className={cn("w-6 h-6 text-accent transition-transform", isSparkleClicked && "animate-pop-rotate")} />
+                        )
+                      )}
+                    </button>
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
