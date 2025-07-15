@@ -12,43 +12,65 @@ import {
 } from "@/components/ui/dialog";
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, CheckCircle2 } from 'lucide-react';
 
 const developerProjects = [
   {
     title: 'AI Healthcare Bot',
-    description: 'A conversational AI to assist with healthcare queries.',
+    description: 'A conversational AI to assist with healthcare queries, disease prediction, and preventive measures.',
     image: 'https://placehold.co/600x400.png',
     hint: 'abstract code',
-    longDescription: 'This project features a sophisticated conversational AI designed to answer healthcare-related questions, provide symptom analysis, and offer initial guidance. It leverages natural language processing to understand user queries and deliver accurate, reliable information.',
-    techStack: ['Next.js', 'Genkit AI', 'Tailwind CSS', 'ShadCN UI'],
+    longDescription: 'Developed a conversational AI chatbot to assist users with healthcare queries, provide basic disease risk predictions, and suggest possible preventive measures. Designed for rural healthcare access, ensuring users can get primary guidance before visiting a doctor.',
+    contributions: [
+        'Designed the conversation flow and intents.',
+        'Implemented disease prediction logic based on user symptoms.',
+        'Developed user-friendly UI for interaction.',
+        'Integrated database for storing conversation history and user data securely.',
+    ],
+    techStack: ['Python', 'Django', 'NLTK', 'scikit-learn', 'MySQL'],
     liveLink: '#',
   },
   {
     title: 'Cloud Classroom',
-    description: 'An online platform for virtual learning and collaboration.',
+    description: 'A web-based platform for virtual learning and collaboration.',
     image: 'https://placehold.co/600x400.png',
     hint: 'technology screen',
-    longDescription: 'Cloud Classroom is a comprehensive e-learning platform that facilitates remote education. It includes features for video conferencing, assignment submission, real-time collaboration on documents, and progress tracking for students.',
-    techStack: ['React', 'Firebase', 'Node.js', 'WebRTC'],
+    longDescription: 'Built a web-based platform for virtual learning and collaboration, enabling students and teachers to manage courses, upload notes, conduct tests, and interact efficiently online.',
+    contributions: [
+        'Designed database schema for user roles and course management.',
+        'Developed the entire front-end and back-end integration.',
+        'Created features for uploading notes, assignments, and announcements.',
+        'Ensured secure user authentication and session management.',
+    ],
+    techStack: ['PHP', 'HTML', 'CSS', 'JavaScript', 'MySQL'],
     liveLink: '#',
   },
   {
     title: 'BookStore',
-    description: 'An e-commerce application for buying and selling books.',
+    description: 'A responsive e-commerce application for buying and selling books.',
     image: 'https://placehold.co/600x400.png',
     hint: 'books library',
-    longDescription: 'A fully functional e-commerce website for a bookstore, complete with user authentication, a product catalog, shopping cart, and a secure checkout process. The backend is built to handle inventory management and order processing.',
-    techStack: ['Django', 'Python', 'MySQL', 'Bootstrap'],
+    longDescription: 'Developed a responsive e-commerce application for buying and selling books, featuring an admin panel to manage inventory, view orders, and update product details.',
+    contributions: [
+        'Designed the entire website layout and responsive UI.',
+        'Implemented product listing, search, cart, and order modules.',
+        'Developed admin login, CRUD functionalities, and secure data handling.',
+    ],
+    techStack: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
     liveLink: '#',
   },
   {
     title: 'Esports Tournament App',
-    description: 'A platform for organizing and participating in gaming tournaments.',
+    description: 'An Android app for organizing and participating in gaming tournaments.',
     image: 'https://placehold.co/600x400.png',
     hint: 'gaming esports',
-    longDescription: 'This application allows users to create, manage, and join esports tournaments. It features bracket generation, match scheduling, real-time score updates, and user profiles to track performance and rankings.',
-    techStack: ['PHP', 'JavaScript', 'MySQL', 'jQuery'],
+    longDescription: 'Created an Android application for organizing and participating in esports gaming tournaments, allowing players to register, view schedules, and get results instantly.',
+    contributions: [
+        'Developed UI components for tournament listings and registration.',
+        'Integrated Firebase for real-time data management.',
+        'Handled user authentication, data storage, and notifications.',
+    ],
+    techStack: ['Java', 'Android Studio', 'Firebase'],
     liveLink: '#',
   },
 ];
@@ -111,8 +133,21 @@ const WorkSection = () => {
                         {project.longDescription}
                       </DialogDescription>
                     </DialogHeader>
-                    <div className="py-4">
-                      <h4 className="font-bold text-lg mb-2 text-primary/90">Tech Stack</h4>
+
+                     <div className="py-2">
+                        <h4 className="font-bold text-lg mb-3 text-primary/90">My Contributions</h4>
+                        <ul className="space-y-2">
+                          {project.contributions.map((point, index) => (
+                            <li key={index} className="flex items-start gap-2">
+                              <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                              <span className="text-foreground/90">{point}</span>
+                            </li>
+                          ))}
+                        </ul>
+                    </div>
+
+                    <div className="py-2">
+                      <h4 className="font-bold text-lg mb-3 text-primary/90">Tech Stack</h4>
                       <div className="flex flex-wrap gap-2">
                         {project.techStack.map(tech => <Badge key={tech} variant="secondary">{tech}</Badge>)}
                       </div>
