@@ -37,8 +37,8 @@ const Preloader = ({ onLoadingComplete }: PreloaderProps) => {
   }, [onLoadingComplete]);
 
   const preloaderSparkles = useMemo(() => {
-    return Array.from({ length: 25 }).map((_, i) => ({
-      id: i,
+    const smallSparkles = Array.from({ length: 25 }).map((_, i) => ({
+      id: `small-${i}`,
       top: `${Math.random() * 100}%`,
       left: `${Math.random() * 100}%`,
       width: `${Math.random() * 12 + 4}px`,
@@ -47,6 +47,19 @@ const Preloader = ({ onLoadingComplete }: PreloaderProps) => {
       animationDelay: `${Math.random() * 4}s`,
       opacity: `${Math.random() * 0.5 + 0.5}`,
     }));
+    
+    const bigSparkles = Array.from({ length: 4 }).map((_, i) => ({
+        id: `big-${i}`,
+        top: `${Math.random() * 90}%`,
+        left: `${Math.random() * 90}%`,
+        width: `${Math.random() * 20 + 20}px`,
+        height: `${Math.random() * 20 + 20}px`,
+        color: Math.random() > 0.5 ? 'text-accent' : 'text-primary',
+        animationDelay: `${Math.random() * 5}s`,
+        opacity: `${Math.random() * 0.6 + 0.4}`,
+      }));
+
+    return [...smallSparkles, ...bigSparkles];
   }, []);
 
   return (
