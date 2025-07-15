@@ -2,12 +2,20 @@ import Image from 'next/image';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import ScrollReveal from '@/components/ui/scroll-reveal';
 
 const AboutSection = () => {
   return (
     <section id="about" className="container mx-auto px-4 animate-fade-in">
       <h2 className="text-4xl md:text-6xl font-headline font-bold text-center mb-12">
-        ABOUT <span className="font-script text-accent text-5xl md:text-7xl">Me</span>
+        <ScrollReveal
+            baseOpacity={0.1}
+            enableBlur={true}
+            baseRotation={3}
+            blurStrength={4}
+        >
+            ABOUT <span className="font-script text-accent text-5xl md:text-7xl">Me</span>
+        </ScrollReveal>
       </h2>
       <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
         <div className="relative">

@@ -5,7 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
 import { Mail, MapPin, Phone, Linkedin, Briefcase, Github } from 'lucide-react';
-import { useToast } from "@/hooks/use-toast"
+import { useToast } from "@/hooks/use-toast";
+import ScrollReveal from '@/components/ui/scroll-reveal';
 
 const ContactSection = () => {
     const { toast } = useToast()
@@ -25,7 +26,16 @@ const ContactSection = () => {
     <section id="contact" className="container mx-auto px-4 animate-fade-in">
       <div className="text-center mb-12">
         <h2 className="text-4xl md:text-6xl font-headline font-bold uppercase">Contact Me</h2>
-        <p className="font-script text-accent text-3xl mt-2">Get In Touch With Me</p>
+        <p className="font-script text-accent text-3xl mt-2">
+            <ScrollReveal
+                baseOpacity={0.1}
+                enableBlur={true}
+                baseRotation={2}
+                blurStrength={5}
+            >
+                Get In Touch With Me
+            </ScrollReveal>
+        </p>
       </div>
       <div className="grid md:grid-cols-2 gap-16 items-start">
         <div className="space-y-6">

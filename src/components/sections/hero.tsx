@@ -6,6 +6,8 @@ import { Sparkles, Download, Send } from 'lucide-react';
 import TypingAnimation from '@/components/ui/typing-animation';
 import Link from 'next/link';
 import { useMemo } from 'react';
+import ScrollReveal from '@/components/ui/scroll-reveal';
+
 
 const HeroSection = () => {
 
@@ -51,8 +53,27 @@ const HeroSection = () => {
 
       <div className="relative z-10 p-4 animate-fade-in -mt-20">
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-headline font-extrabold tracking-tighter">
-          <span className="font-script text-accent text-7xl md:text-9xl lg:text-[10rem] block -mb-4 md:-mb-8">Vipul</span>
-          VADHE
+            <ScrollReveal
+                baseOpacity={0}
+                enableBlur={true}
+                baseRotation={5}
+                blurStrength={8}
+                rotationEnd='bottom bottom'
+                wordAnimationEnd='bottom bottom'
+                className="font-script text-accent text-7xl md:text-9xl lg:text-[10rem] block -mb-4 md:-mb-8"
+            >
+                Vipul
+            </ScrollReveal>
+             <ScrollReveal
+                baseOpacity={0}
+                enableBlur={true}
+                baseRotation={5}
+                blurStrength={8}
+                rotationEnd='bottom bottom'
+                wordAnimationEnd='bottom bottom'
+            >
+                VADHE
+            </ScrollReveal>
         </h1>
         <div className="text-2xl md:text-3xl font-bold tracking-widest uppercase font-headline mt-4 h-10">
           <TypingAnimation />

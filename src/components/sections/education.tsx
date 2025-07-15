@@ -1,11 +1,20 @@
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { GraduationCap } from 'lucide-react';
+import ScrollReveal from '@/components/ui/scroll-reveal';
 
 const EducationSection = () => {
   return (
     <section id="education" className="animate-fade-in">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-6xl font-headline font-bold text-center mb-12 uppercase">Education</h2>
+        <h2 className="text-4xl md:text-6xl font-headline font-bold text-center mb-12 uppercase">
+          <ScrollReveal
+            baseOpacity={0.2}
+            enableBlur={false}
+            baseRotation={2}
+          >
+            Education
+          </ScrollReveal>
+        </h2>
         <div className="flex flex-wrap justify-center gap-8">
           <Card className="w-full max-w-md bg-card/80 border-primary/20 shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-accent/20">
             <CardHeader>

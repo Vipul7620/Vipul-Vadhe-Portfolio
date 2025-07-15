@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Briefcase } from 'lucide-react';
+import ScrollReveal from '@/components/ui/scroll-reveal';
 
 const experiences = [
   {
@@ -29,7 +30,15 @@ const ExperienceSection = () => {
   return (
     <section id="experience" className="animate-fade-in">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-6xl font-headline font-bold text-center mb-12 uppercase">Experience</h2>
+        <h2 className="text-4xl md:text-6xl font-headline font-bold text-center mb-12 uppercase">
+            <ScrollReveal
+                baseOpacity={0.2}
+                enableBlur={false}
+                baseRotation={2}
+            >
+                Experience
+            </ScrollReveal>
+        </h2>
         <div className="max-w-3xl mx-auto space-y-8">
           {experiences.map((exp, index) => (
             <Card key={index} className="bg-card/80 border-primary/20 shadow-lg">

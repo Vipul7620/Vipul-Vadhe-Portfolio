@@ -19,6 +19,7 @@ import { Button } from '@/components/ui/button';
 import { ExternalLink, CheckCircle2 } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import FullscreenConfetti from '@/components/ui/fullscreen-confetti';
+import ScrollReveal from '@/components/ui/scroll-reveal';
 
 const developerProjects = [
   {
@@ -191,7 +192,14 @@ const WorkSection = () => {
       {isExploding && <FullscreenConfetti onComplete={() => setIsExploding(false)} />}
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-6xl font-headline font-bold text-center mb-12 uppercase relative inline-block left-1/2 -translate-x-1/2">
-          My Work
+            <ScrollReveal
+                baseOpacity={0}
+                enableBlur={true}
+                baseRotation={5}
+                blurStrength={10}
+            >
+                My Work
+            </ScrollReveal>
           <span className="absolute -bottom-2 left-0 w-full h-1 bg-accent"></span>
         </h2>
 
