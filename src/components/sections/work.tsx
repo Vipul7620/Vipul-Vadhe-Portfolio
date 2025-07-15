@@ -48,9 +48,9 @@ const WorkSection = () => {
         </h2>
 
         <Tabs defaultValue="developer" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto bg-card/80 border-primary/20 mb-8">
-            <TabsTrigger value="developer" className="font-headline text-lg">Developer Projects</TabsTrigger>
-            <TabsTrigger value="designer" className="font-headline text-lg">Design Works</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto bg-transparent border-primary/20 mb-8 p-0 h-auto">
+            <TabsTrigger value="developer" className="font-headline text-lg py-2 data-[state=active]:bg-accent/20 data-[state=active]:text-primary data-[state=inactive]:text-muted-foreground hover:bg-accent/10 hover:text-primary transition-colors duration-300 rounded-t-lg">Developer Projects</TabsTrigger>
+            <TabsTrigger value="designer" className="font-headline text-lg py-2 data-[state=active]:bg-accent/20 data-[state=active]:text-primary data-[state=inactive]:text-muted-foreground hover:bg-accent/10 hover:text-primary transition-colors duration-300 rounded-t-lg">Design Works</TabsTrigger>
           </TabsList>
 
           <TabsContent value="developer">
