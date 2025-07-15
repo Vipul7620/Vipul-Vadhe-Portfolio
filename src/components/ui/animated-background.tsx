@@ -2,11 +2,11 @@
 
 const AnimatedBackground = () => {
   return (
-    <>
-      <div className="stars" />
-      <div className="stars2" />
-      <div className="stars3" />
-    </>
+    <div className="gradient-bg">
+      <div className="blob blob1"></div>
+      <div className="blob blob2"></div>
+      <div className="blob blob3"></div>
+    </div>
   );
 };
 
