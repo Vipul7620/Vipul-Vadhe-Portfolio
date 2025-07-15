@@ -117,14 +117,14 @@ const developerProjects = [
 const designWorks = [
   { 
     title: 'Sample 1', 
-    coverImage: 'https://placehold.co/400x400.png', 
+    coverImage: 'https://placehold.co/400x600.png', 
     hint: 'poster design',
     images: [
-      { src: 'https://placehold.co/800x800.png', hint: 'poster design' },
+      { src: 'https://placehold.co/800x1200.png', hint: 'poster design' },
       { src: 'https://placehold.co/800x800.png', hint: 'event poster' },
-      { src: 'https://placehold.co/800x800.png', hint: 'movie poster' },
-      { src: 'https://placehold.co/800x800.png', hint: 'creative poster' },
-      { src: 'https://placehold.co/800x800.png', hint: 'artistic poster' },
+      { src: 'https://placehold.co/1200x800.png', hint: 'movie poster' },
+      { src: 'https://placehold.co/800x600.png', hint: 'creative poster' },
+      { src: 'https://placehold.co/600x800.png', hint: 'artistic poster' },
     ]
   },
   { 
@@ -139,22 +139,22 @@ const designWorks = [
   },
   { 
     title: 'Sample 3', 
-    coverImage: 'https://placehold.co/400x400.png', 
+    coverImage: 'https://placehold.co/400x500.png', 
     hint: 'branding identity',
     images: [
-      { src: 'https://placehold.co/800x800.png', hint: 'stationery mockup' },
-      { src: 'https://placehold.co/800x800.png', hint: 'brand guide' },
+      { src: 'https://placehold.co/1200x800.png', hint: 'stationery mockup' },
+      { src: 'https://placehold.co/800x1000.png', hint: 'brand guide' },
       { src: 'https://placehold.co/800x800.png', hint: 'product branding' },
     ]
   },
   { 
     title: 'Sample 4', 
-    coverImage: 'https://placehold.co/400x400.png', 
+    coverImage: 'https://placehold.co/400x300.png', 
     hint: 'social media',
     images: [
       { src: 'https://placehold.co/800x800.png', hint: 'instagram post' },
-      { src: 'https://placehold.co/800x800.png', hint: 'facebook ad' },
-      { src: 'https://placehold.co/800x800.png', hint: 'twitter graphic' },
+      { src: 'https://placehold.co/1200x628.png', hint: 'facebook ad' },
+      { src: 'https://placehold.co/1024x512.png', hint: 'twitter graphic' },
     ]
   },
   { 
@@ -163,18 +163,18 @@ const designWorks = [
     hint: 'logo collection',
     images: [
       { src: 'https://placehold.co/800x800.png', hint: 'assorted logos' },
-      { src: 'https://placehold.co/800x800.png', hint: 'logo variations' },
-      { src: 'https://placehold.co/800x800.png', hint: 'logo concepts' },
+      { src: 'https://placehold.co/1000x1000.png', hint: 'logo variations' },
+      { src: 'https://placehold.co/800x600.png', hint: 'logo concepts' },
     ]
   },
   { 
     title: 'Sample 6', 
-    coverImage: 'https://placehold.co/400x400.png', 
+    coverImage: 'https://placehold.co/400x550.png', 
     hint: 'poster series',
     images: [
-      { src: 'https://placehold.co/800x800.png', hint: 'minimalist poster' },
-      { src: 'https://placehold.co/800x800.png', hint: 'typographic poster' },
-      { src: 'https://placehold.co/800x800.png', hint: 'abstract poster' },
+      { src: 'https://placehold.co/800x1100.png', hint: 'minimalist poster' },
+      { src: 'https://placehold.co/800x1100.png', hint: 'typographic poster' },
+      { src: 'https://placehold.co/800x1100.png', hint: 'abstract poster' },
     ]
   },
 ];
@@ -303,17 +303,17 @@ const WorkSection = () => {
           </TabsContent>
           
           <TabsContent value="designer">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="columns-2 md:columns-3 gap-4 space-y-4">
               {designWorks.map((work, index) => (
                 <Dialog key={index}>
                   <DialogTrigger asChild>
-                    <div className="relative rounded-lg overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-2 cursor-pointer aspect-square">
+                    <div className="break-inside-avoid relative rounded-lg overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-2 cursor-pointer">
                       <Image
                         src={work.coverImage}
                         alt={work.title}
                         width={400}
                         height={400}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
                         data-ai-hint={work.hint}
                       />
                       <div className="absolute inset-0 bg-black/40 group-hover:bg-accent/70 transition-colors duration-300 flex items-center justify-center p-4">
