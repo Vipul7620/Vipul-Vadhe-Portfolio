@@ -39,7 +39,7 @@ const designWorks = [
 
 const WorkSection = () => {
   return (
-    <section id="my-work" className="bg-card/50 animate-fade-in">
+    <section id="my-work" className="animate-fade-in">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-6xl font-headline font-bold text-center mb-12 uppercase relative inline-block left-1/2 -translate-x-1/2">
           My Work
@@ -51,7 +51,7 @@ const WorkSection = () => {
           <h3 className="text-3xl font-headline font-bold mb-8 text-center">Developer Projects</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
             {developerProjects.map((project) => (
-              <Card key={project.title} className="bg-background border-primary/20 overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-2">
+              <Card key={project.title} className="bg-background/80 border-primary/20 overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-2">
                 <div className="relative">
                   <Image
                     src={project.image}

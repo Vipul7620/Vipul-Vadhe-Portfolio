@@ -11,7 +11,7 @@ const AboutSection = () => {
       </h2>
       <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
         <div className="relative">
-          <Card className="p-8 border-primary/20 bg-card">
+          <Card className="p-8 border-primary/20 bg-card/80">
             <p className="text-lg leading-relaxed text-foreground/90">
               Passionate and dedicated Full-Stack Developer with an MCA from MIT World Peace University (June 2025). Skilled in Python, Java, PHP, JavaScript, REST APIs, and modern backend frameworks. Also a creative Graphic Designer delivering branding, posters, social content, and UI/UX elements for diverse projects.
             </p>

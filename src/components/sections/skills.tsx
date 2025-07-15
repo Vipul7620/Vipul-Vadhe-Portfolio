@@ -26,7 +26,7 @@ const SkillsSection = () => {
       <h2 className="text-4xl md:text-6xl font-headline font-bold text-center mb-12 uppercase">Skills</h2>
       <div className="grid md:grid-cols-2 gap-12">
         
-        <Card className="bg-card border-primary/20">
+        <Card className="bg-card/80 border-primary/20">
           <CardHeader>
             <CardTitle className="flex items-center gap-4 text-2xl font-bold font-headline text-primary">
               <Code className="w-8 h-8 text-accent" />
@@ -45,7 +45,7 @@ const SkillsSection = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-card border-primary/20">
+        <Card className="bg-card/80 border-primary/20">
           <CardHeader>
             <CardTitle className="flex items-center gap-4 text-2xl font-bold font-headline text-primary">
               <Paintbrush className="w-8 h-8 text-accent" />

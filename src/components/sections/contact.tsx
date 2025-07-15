@@ -33,16 +33,16 @@ const ContactSection = () => {
             Ready to collaborate? Let’s discuss your next project. Drop me a message below!
           </p>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <Input type="text" placeholder="Name" required className="bg-input border-primary/20 focus:ring-accent" />
-            <Input type="email" placeholder="Email" required className="bg-input border-primary/20 focus:ring-accent"/>
-            <Textarea placeholder="Message" required className="bg-input border-primary/20 min-h-[150px] focus:ring-accent"/>
+            <Input type="text" placeholder="Name" required className="bg-input/80 border-primary/20 focus:ring-accent" />
+            <Input type="email" placeholder="Email" required className="bg-input/80 border-primary/20 focus:ring-accent"/>
+            <Textarea placeholder="Message" required className="bg-input/80 border-primary/20 min-h-[150px] focus:ring-accent"/>
             <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg py-6 rounded-full">
               Send Message
             </Button>
           </form>
         </div>
         <div className="space-y-6">
-          <Card className="bg-card border-primary/20">
+          <Card className="bg-card/80 border-primary/20">
             <CardContent className="p-6 space-y-4">
               <a href="#" className="flex items-center gap-4 group">
                 <MapPin className="w-6 h-6 text-accent" />
@@ -60,7 +60,7 @@ const ContactSection = () => {
               </a>
             </CardContent>
           </Card>
-           <Card className="bg-card border-primary/20">
+           <Card className="bg-card/80 border-primary/20">
             <CardContent className="p-6 flex justify-around">
                <a href="https://linkedin.com/in/vipul-vadhe" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                 <Linkedin className="w-8 h-8 text-accent group-hover:scale-110 transition-transform" />
