@@ -27,11 +27,6 @@ const AboutSection = () => {
               className="rounded-full border-4 border-primary shadow-lg transition-transform duration-300 group-hover:scale-105"
               data-ai-hint="profile photo"
             />
-            <div className="absolute -bottom-4 -right-4">
-              <Button size="icon" className="rounded-full bg-accent hover:bg-accent/90 w-16 h-16">
-                <ArrowRight className="w-8 h-8 text-primary" />
-              </Button>
-            </div>
             <Sparkles className="absolute top-0 left-0 w-8 h-8 text-accent animate-twinkle" />
              <Sparkles className="absolute bottom-8 right-0 w-6 h-6 text-primary animate-twinkle" style={{ animationDelay: '1s' }} />
           </div>
