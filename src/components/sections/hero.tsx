@@ -1,5 +1,7 @@
-import { Sparkles } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Sparkles, Download, Send } from 'lucide-react';
 import TypingAnimation from '@/components/ui/typing-animation';
+import Link from 'next/link';
 
 const HeroSection = () => {
   return (
@@ -19,7 +21,7 @@ const HeroSection = () => {
         <Sparkles className="w-full h-full" />
       </div>
 
-      <div className="relative z-10 p-4 animate-fade-in">
+      <div className="relative z-10 p-4 animate-fade-in -mt-20">
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-headline font-extrabold tracking-tighter">
           <span className="font-script text-accent text-7xl md:text-9xl lg:text-[10rem] block -mb-4 md:-mb-8">Vipul</span>
           VADHE
@@ -30,6 +32,20 @@ const HeroSection = () => {
         <p className="max-w-2xl mx-auto mt-6 text-lg text-foreground/80 leading-relaxed">
           I am a passionate Graphic Designer & Full-Stack Developer, blending creative vision with technical skill. I craft digital experiences and stunning visuals that bring ideas to life. Explore my work and let’s build something amazing together.
         </p>
+         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg py-6 px-8 rounded-full transition-transform duration-300 hover:scale-105">
+            <a href="/resume.pdf" download>
+              <Download className="mr-2 h-5 w-5" />
+              Download Resume
+            </a>
+          </Button>
+          <Button asChild size="lg" variant="outline" className="text-lg py-6 px-8 rounded-full border-primary/40 hover:bg-primary/10 hover:text-primary transition-transform duration-300 hover:scale-105">
+            <Link href="#contact">
+              <Send className="mr-2 h-5 w-5" />
+              Get In Touch
+            </Link>
+          </Button>
+        </div>
       </div>
     </section>
   );
