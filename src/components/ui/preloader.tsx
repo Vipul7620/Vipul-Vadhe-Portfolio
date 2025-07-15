@@ -5,6 +5,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { Progress } from '@/components/ui/progress';
 import { cn } from '@/lib/utils';
 import { Sparkles } from 'lucide-react';
+import LetterGlitch from './letter-glitch';
 
 interface PreloaderProps {
   onLoadingComplete: () => void;
@@ -36,32 +37,6 @@ const Preloader = ({ onLoadingComplete }: PreloaderProps) => {
     return () => clearInterval(timer);
   }, [onLoadingComplete]);
 
-  const preloaderSparkles = useMemo(() => {
-    const smallSparkles = Array.from({ length: 25 }).map((_, i) => ({
-      id: `small-${i}`,
-      top: `${Math.random() * 100}%`,
-      left: `${Math.random() * 100}%`,
-      width: `${Math.random() * 12 + 4}px`,
-      height: `${Math.random() * 12 + 4}px`,
-      color: Math.random() > 0.5 ? 'text-accent' : 'text-primary',
-      animationDelay: `${Math.random() * 4}s`,
-      opacity: `${Math.random() * 0.5 + 0.5}`,
-    }));
-    
-    const bigSparkles = Array.from({ length: 4 }).map((_, i) => ({
-        id: `big-${i}`,
-        top: `${Math.random() * 90}%`,
-        left: `${Math.random() * 90}%`,
-        width: `${Math.random() * 20 + 20}px`,
-        height: `${Math.random() * 20 + 20}px`,
-        color: Math.random() > 0.5 ? 'text-accent' : 'text-primary',
-        animationDelay: `${Math.random() * 5}s`,
-        opacity: `${Math.random() * 0.6 + 0.4}`,
-      }));
-
-    return [...smallSparkles, ...bigSparkles];
-  }, []);
-
   return (
     <div
       className={cn(
@@ -69,17 +44,10 @@ const Preloader = ({ onLoadingComplete }: PreloaderProps) => {
         isFadingOut ? "opacity-0" : "opacity-100"
       )}
     >
-      {preloaderSparkles.map(s => (
-        <div 
-          key={s.id}
-          className="absolute animate-twinkle" 
-          style={{ top: s.top, left: s.left, width: s.width, height: s.height, animationDelay: s.animationDelay, opacity: s.opacity }}
-        >
-          <Sparkles className={`w-full h-full ${s.color}`} />
+        <div className="absolute inset-0 opacity-30 z-0">
+          <LetterGlitch glitchColors={['hsl(var(--primary))', 'hsl(var(--accent))', 'hsl(var(--secondary))']} />
         </div>
-      ))}
-
-      <div className="relative text-center">
+      <div className="relative z-10 text-center">
         <p className="font-script text-2xl text-primary/80 mb-2">Welcome To</p>
         <h1 className="text-6xl md:text-8xl font-headline font-extrabold">
           <span className="font-script text-accent text-7xl md:text-9xl normal-case mr-4">Vipul</span>
