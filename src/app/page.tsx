@@ -15,10 +15,10 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutSection />
-        <SkillsSection />
-        <EducationSection />
         <ExperienceSection />
+        <SkillsSection />
         <WorkSection />
+        <EducationSection />
         <ContactSection />
       </main>
       <Footer />
