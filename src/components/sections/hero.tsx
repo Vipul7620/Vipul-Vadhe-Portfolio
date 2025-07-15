@@ -60,7 +60,7 @@ const HeroSection = () => {
                 blurStrength={8}
                 rotationEnd='bottom bottom'
                 wordAnimationEnd='bottom bottom'
-                className="font-script text-accent text-7xl md:text-9xl lg:text-[10rem] block -mb-4 md:-mb-8"
+                className="font-script text-accent text-5xl md:text-7xl lg:text-[8rem] block -mb-4 md:-mb-8"
             >
                 ChromatIQ
             </ScrollReveal>
