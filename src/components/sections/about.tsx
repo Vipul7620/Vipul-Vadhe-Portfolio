@@ -13,7 +13,7 @@ const AboutSection = () => {
         <div className="relative">
           <Card className="p-8 border-primary/20 bg-card/80">
             <p className="text-lg leading-relaxed text-foreground/90">
-              Passionate and dedicated Full-Stack Developer with an MCA from MIT World Peace University (June 2025). Skilled in Python, Java, PHP, JavaScript, REST APIs, and modern backend frameworks. Also a creative Graphic Designer delivering branding, posters, social content, and UI/UX elements for diverse projects.
+              I’m Vipul Vadhe – a creative technologist who merges design aesthetics with coding logic to craft digital experiences that are both functional and beautiful. With an MCA and a passion for building impactful solutions, I’ve developed AI tools, educational games, and web platforms while designing visuals that communicate stories powerfully. I believe in creating work that not only solves problems but also sparks curiosity and emotion, blending my love for technology, design, and continuous learning into everything I build.
             </p>
           </Card>
         </div>
