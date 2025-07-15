@@ -2,19 +2,22 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Sparkles, Download, Send } from 'lucide-react';
+import { Download, Send } from 'lucide-react';
 import TypingAnimation from '@/components/ui/typing-animation';
 import Link from 'next/link';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
+import { Star } from '@/components/ui/star';
 
 
 const HeroSection = () => {
-  const [sparkles, setSparkles] = useState<any[]>([]);
+  const [stars, setStars] = useState<any[]>([]);
 
   useEffect(() => {
-    const generateSparkles = () => {
-      const smallSparkles = Array.from({ length: 25 }).map((_, i) => ({
+    const generateStars = () => {
+      const starTypes: ('four' | 'six' | 'eight' | 'sparkle')[] = ['four', 'six', 'eight', 'sparkle'];
+      
+      const smallStars = Array.from({ length: 25 }).map((_, i) => ({
         id: `small-${i}`,
         top: `${Math.random() * 100}%`,
         left: `${Math.random() * 100}%`,
@@ -23,9 +26,10 @@ const HeroSection = () => {
         color: Math.random() > 0.5 ? 'text-accent' : 'text-primary',
         animationDelay: `${Math.random() * 4}s`,
         opacity: `${Math.random() * 0.5 + 0.5}`,
+        type: starTypes[Math.floor(Math.random() * starTypes.length)],
       }));
   
-      const bigSparkles = Array.from({ length: 4 }).map((_, i) => ({
+      const bigStars = Array.from({ length: 4 }).map((_, i) => ({
         id: `big-${i}`,
         top: `${Math.random() * 90}%`,
         left: `${Math.random() * 90}%`,
@@ -34,12 +38,15 @@ const HeroSection = () => {
         color: Math.random() > 0.5 ? 'text-accent' : 'text-primary',
         animationDelay: `${Math.random() * 5}s`,
         opacity: `${Math.random() * 0.6 + 0.4}`,
+        type: starTypes[Math.floor(Math.random() * starTypes.length)],
       }));
       
-      setSparkles([...smallSparkles, ...bigSparkles]);
+      setStars([...smallStars, ...bigStars]);
     };
 
-    generateSparkles();
+    if (typeof window !== 'undefined') {
+        generateStars();
+    }
   }, []);
 
 
@@ -47,13 +54,13 @@ const HeroSection = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-t from-accent/10 via-background/50 to-background"></div>
       
-      {sparkles.map(s => (
+      {stars.map(s => (
         <div 
           key={s.id}
           className="absolute animate-twinkle" 
           style={{ top: s.top, left: s.left, width: s.width, height: s.height, animationDelay: s.animationDelay, opacity: s.opacity }}
         >
-          <Sparkles className={`w-full h-full ${s.color}`} />
+          <Star type={s.type} className={`w-full h-full ${s.color}`} />
         </div>
       ))}
 
