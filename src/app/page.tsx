@@ -1,3 +1,25 @@
+import Header from '@/components/sections/header';
+import HeroSection from '@/components/sections/hero';
+import AboutSection from '@/components/sections/about';
+import EducationSection from '@/components/sections/education';
+import ExperienceSection from '@/components/sections/experience';
+import WorkSection from '@/components/sections/work';
+import ContactSection from '@/components/sections/contact';
+import Footer from '@/components/sections/footer';
+
 export default function Home() {
-  return <></>;
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <EducationSection />
+        <ExperienceSection />
+        <WorkSection />
+        <ContactSection />
+      </main>
+      <Footer />
+    </div>
+  );
 }
