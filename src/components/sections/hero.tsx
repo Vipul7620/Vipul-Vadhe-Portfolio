@@ -1,25 +1,40 @@
+
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { Sparkles, Download, Send } from 'lucide-react';
 import TypingAnimation from '@/components/ui/typing-animation';
 import Link from 'next/link';
+import { useMemo } from 'react';
 
 const HeroSection = () => {
+
+  const sparkles = useMemo(() => {
+    return Array.from({ length: 25 }).map((_, i) => ({
+      id: i,
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      width: `${Math.random() * 12 + 4}px`,
+      height: `${Math.random() * 12 + 4}px`,
+      color: Math.random() > 0.5 ? 'text-accent' : 'text-primary',
+      animationDelay: `${Math.random() * 4}s`,
+      opacity: `${Math.random() * 0.5 + 0.5}`,
+    }));
+  }, []);
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-t from-accent/10 via-background/50 to-background"></div>
       
-      <div className="absolute top-1/4 left-1/4 w-8 h-8 text-accent animate-twinkle" style={{ animationDelay: '0s' }}>
-        <Sparkles className="w-full h-full" />
-      </div>
-      <div className="absolute top-1/2 right-1/4 w-6 h-6 text-primary animate-twinkle" style={{ animationDelay: '1s' }}>
-        <Sparkles className="w-full h-full" />
-      </div>
-      <div className="absolute bottom-1/4 left-1/3 w-4 h-4 text-accent animate-twinkle" style={{ animationDelay: '2s' }}>
-        <Sparkles className="w-full h-full" />
-      </div>
-      <div className="absolute top-20 right-20 w-10 h-10 text-primary animate-twinkle" style={{ animationDelay: '0.5s' }}>
-        <Sparkles className="w-full h-full" />
-      </div>
+      {sparkles.map(s => (
+        <div 
+          key={s.id}
+          className="absolute animate-twinkle" 
+          style={{ top: s.top, left: s.left, width: s.width, height: s.height, animationDelay: s.animationDelay, opacity: s.opacity }}
+        >
+          <Sparkles className={`w-full h-full ${s.color}`} />
+        </div>
+      ))}
 
       <div className="relative z-10 p-4 animate-fade-in -mt-20">
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-headline font-extrabold tracking-tighter">
