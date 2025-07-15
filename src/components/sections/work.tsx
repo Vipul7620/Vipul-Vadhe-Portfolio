@@ -1,15 +1,23 @@
 
+
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
   DialogFooter,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -108,13 +116,68 @@ const developerProjects = [
 ];
 
 const designWorks = [
-  { title: 'Poster Design', image: 'https://placehold.co/400x600.png', hint: 'poster design' },
-  { title: 'Logo Design', image: 'https://placehold.co/400x400.png', hint: 'logo design' },
-  { title: 'Branding Mockup', image: 'https://placehold.co/600x400.png', hint: 'branding identity' },
-  { title: 'Social Media Reel Cover', image: 'https://placehold.co/400x700.png', hint: 'social media' },
-  { title: 'Logo Collection', image: 'https://placehold.co/600x400.png', hint: 'logo collection' },
-  { title: 'Poster Series', image: 'https://placehold.co/400x500.png', hint: 'poster series' },
+  { 
+    title: 'Poster Design', 
+    coverImage: 'https://placehold.co/400x600.png', 
+    hint: 'poster design',
+    images: [
+      { src: 'https://placehold.co/800x1200.png', hint: 'poster design' },
+      { src: 'https://placehold.co/800x1200.png', hint: 'event poster' },
+      { src: 'https://placehold.co/800x1200.png', hint: 'movie poster' },
+    ]
+  },
+  { 
+    title: 'Logo Design', 
+    coverImage: 'https://placehold.co/400x400.png',
+    hint: 'logo design',
+    images: [
+      { src: 'https://placehold.co/800x800.png', hint: 'modern logo' },
+      { src: 'https://placehold.co/800x800.png', hint: 'minimalist logo' },
+      { src: 'https://placehold.co/800x800.png', hint: 'company logo' },
+    ]
+  },
+  { 
+    title: 'Branding Mockup', 
+    coverImage: 'https://placehold.co/600x400.png', 
+    hint: 'branding identity',
+    images: [
+      { src: 'https://placehold.co/1200x800.png', hint: 'stationery mockup' },
+      { src: 'https://placehold.co/1200x800.png', hint: 'brand guide' },
+      { src: 'https://placehold.co/1200x800.png', hint: 'product branding' },
+    ]
+  },
+  { 
+    title: 'Social Media Reel Cover', 
+    coverImage: 'https://placehold.co/400x700.png', 
+    hint: 'social media',
+    images: [
+      { src: 'https://placehold.co/800x1400.png', hint: 'instagram reel' },
+      { src: 'https://placehold.co/800x1400.png', hint: 'tiktok cover' },
+      { src: 'https://placehold.co/800x1400.png', hint: 'youtube short' },
+    ]
+  },
+  { 
+    title: 'Logo Collection', 
+    coverImage: 'https://placehold.co/600x400.png', 
+    hint: 'logo collection',
+    images: [
+      { src: 'https://placehold.co/1200x800.png', hint: 'assorted logos' },
+      { src: 'https://placehold.co/1200x800.png', hint: 'logo variations' },
+      { src: 'https://placehold.co/1200x800.png', hint: 'logo concepts' },
+    ]
+  },
+  { 
+    title: 'Poster Series', 
+    coverImage: 'https://placehold.co/400x500.png', 
+    hint: 'poster series',
+    images: [
+      { src: 'https://placehold.co/800x1000.png', hint: 'minimalist poster' },
+      { src: 'https://placehold.co/800x1000.png', hint: 'typographic poster' },
+      { src: 'https://placehold.co/800x1000.png', hint: 'abstract poster' },
+    ]
+  },
 ];
+
 
 const WorkSection = () => {
   return (
@@ -204,7 +267,7 @@ const WorkSection = () => {
                   <DialogTrigger asChild>
                     <div className="relative rounded-lg overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-2 cursor-pointer">
                       <Image
-                        src={work.image}
+                        src={work.coverImage}
                         alt={work.title}
                         width={400}
                         height={600}
@@ -212,18 +275,38 @@ const WorkSection = () => {
                         data-ai-hint={work.hint}
                       />
                       <div className="absolute inset-0 bg-black/40 group-hover:bg-accent/70 transition-colors duration-300 flex items-center justify-center p-4">
-                         <span className="text-primary text-lg font-bold text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Full Design</span>
+                         <span className="text-primary text-lg font-bold text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Gallery</span>
                       </div>
                     </div>
                   </DialogTrigger>
-                  <DialogContent className="sm:max-w-[80vw] w-auto h-auto bg-card border-primary/30 p-2">
-                     <Image
-                        src={work.image}
-                        alt={work.title}
-                        width={1200}
-                        height={1800}
-                        className="w-full h-full object-contain rounded-md"
-                      />
+                  <DialogContent className="sm:max-w-3xl w-full bg-card/90 border-primary/30 p-4">
+                     <DialogHeader>
+                      <DialogTitle className="font-headline text-3xl text-primary">{work.title}</DialogTitle>
+                    </DialogHeader>
+                    <Carousel className="w-full">
+                      <CarouselContent>
+                        {work.images.map((image, i) => (
+                          <CarouselItem key={i}>
+                            <div className="p-1">
+                              <Card className="bg-transparent border-0">
+                                <CardContent className="flex aspect-video items-center justify-center p-0 relative">
+                                  <Image
+                                    src={image.src}
+                                    alt={`${work.title} - Image ${i + 1}`}
+                                    width={1200}
+                                    height={800}
+                                    className="w-full h-full object-contain rounded-lg"
+                                    data-ai-hint={image.hint}
+                                  />
+                                </CardContent>
+                              </Card>
+                            </div>
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <CarouselPrevious className="left-2" />
+                      <CarouselNext className="right-2" />
+                    </Carousel>
                   </DialogContent>
                 </Dialog>
               ))}
