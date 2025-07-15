@@ -1,5 +1,7 @@
 
 
+'use client';
+import { useState } from 'react';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -14,8 +16,9 @@ import {
 } from "@/components/ui/dialog";
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, CheckCircle2, Laugh } from 'lucide-react';
+import { ExternalLink, CheckCircle2 } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import FullscreenConfetti from '@/components/ui/fullscreen-confetti';
 
 const developerProjects = [
   {
@@ -176,22 +179,16 @@ const designWorks = [
 ];
 
 
-const PoppingSmiley = ({ delay }: { delay: number }) => (
-  <Laugh
-    className="absolute text-accent opacity-0 animate-pop"
-    style={{
-      width: `${Math.random() * 20 + 20}px`,
-      height: `${Math.random() * 20 + 20}px`,
-      left: `${Math.random() * 90}%`,
-      top: `${Math.random() * 90}%`,
-      animationDelay: `${delay}s`,
-    }}
-  />
-);
-
 const WorkSection = () => {
+    const [isExploding, setIsExploding] = useState(false);
+
+    const handlePortfolioClick = () => {
+        setIsExploding(true);
+    };
+
   return (
     <section id="my-work" className="animate-fade-in">
+      {isExploding && <FullscreenConfetti onComplete={() => setIsExploding(false)} />}
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-6xl font-headline font-bold text-center mb-12 uppercase relative inline-block left-1/2 -translate-x-1/2">
           My Work
@@ -209,7 +206,10 @@ const WorkSection = () => {
               {developerProjects.map((project) => (
                 <Dialog key={project.title}>
                   <DialogTrigger asChild>
-                    <Card className="bg-card/80 border-primary/20 overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-2 cursor-pointer">
+                    <Card 
+                      onClick={project.title === 'This Portfolio Website' ? handlePortfolioClick : undefined}
+                      className="bg-card/80 border-primary/20 overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-2 cursor-pointer"
+                    >
                       <div className="relative">
                         <Image
                           src={project.image}
@@ -238,11 +238,6 @@ const WorkSection = () => {
                           <DialogTitle className="font-headline text-3xl text-primary text-center">{project.title}</DialogTitle>
                            <DialogDescription className="text-foreground/80 pt-4 text-center text-lg relative">
                              {project.longDescription}
-                             <div className="absolute inset-0 overflow-hidden">
-                               {[...Array(10)].map((_, i) => (
-                                 <PoppingSmiley key={i} delay={i * 0.2} />
-                               ))}
-                             </div>
                            </DialogDescription>
                          </DialogHeader>
                          <div className="py-2">
