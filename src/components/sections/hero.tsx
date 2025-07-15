@@ -1,4 +1,5 @@
 import { Sparkles } from 'lucide-react';
+import TypingAnimation from '@/components/ui/typing-animation';
 
 const HeroSection = () => {
   return (
@@ -23,9 +24,9 @@ const HeroSection = () => {
           <span className="font-script text-accent text-7xl md:text-9xl lg:text-[10rem] block -mb-4 md:-mb-8">Vipul</span>
           VADHE
         </h1>
-        <p className="text-2xl md:text-3xl font-bold tracking-widest uppercase font-headline mt-4">
-          Vipul Vadhe
-        </p>
+        <div className="text-2xl md:text-3xl font-bold tracking-widest uppercase font-headline mt-4 h-10">
+          <TypingAnimation />
+        </div>
         <p className="max-w-2xl mx-auto mt-6 text-lg text-foreground/80 leading-relaxed">
           Welcome to my Online Portfolio! I am a passionate Graphic Designer & Full-Stack Developer, blending creative vision with technical skill. I craft digital experiences and stunning visuals that bring ideas to life. Explore my work and let’s build something amazing together.
         </p>
