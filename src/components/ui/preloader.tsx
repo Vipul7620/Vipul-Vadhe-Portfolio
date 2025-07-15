@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -23,9 +24,9 @@ const Preloader = ({ onLoadingComplete }: PreloaderProps) => {
           }, 300);
           return 100;
         }
-        return prev + 2;
+        return prev + 1;
       });
-    }, 40);
+    }, 50); // 100 steps * 50ms = 5000ms = 5 seconds
 
     return () => clearInterval(timer);
   }, [onLoadingComplete]);
@@ -38,11 +39,19 @@ const Preloader = ({ onLoadingComplete }: PreloaderProps) => {
       )}
     >
       <div className="text-center">
+        <p className="font-script text-2xl text-primary/80 mb-2">Welcome To</p>
         <h1 className="text-6xl md:text-8xl font-headline font-extrabold">
           <span className="font-script text-accent text-7xl md:text-9xl normal-case mr-4">Vipul</span>
           <span className="font-script text-primary text-7xl md:text-9xl normal-case">Vadhe</span>
         </h1>
-        <Progress value={progress} className="w-64 md:w-96 h-2 mt-8 mx-auto bg-primary/20" />
+        <p className="font-script text-2xl text-primary/80 mt-2 tracking-widest">Portfolio</p>
+
+        <div className="relative w-64 md:w-96 h-4 mt-8 mx-auto">
+            <Progress value={progress} className="w-full h-full bg-primary/20" />
+            <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-primary-foreground">
+                {Math.round(progress)}%
+            </span>
+        </div>
       </div>
     </div>
   );
