@@ -1,31 +1,57 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Briefcase } from 'lucide-react';
 
+const experiences = [
+  {
+    title: 'Design & Development Intern',
+    company: 'Koushiki Innovision',
+    duration: 'Jan 2025 – June 2025',
+    points: [
+      'Designed customizable Ludo game with educational features.',
+      'Built theme selector, multi-dice logic, and animations.',
+      'Hands-on experience with Unity, Blender 3D, UI/UX, and deployment.',
+    ],
+  },
+  {
+    title: 'Freelance Graphic Designer & Video Editor',
+    company: 'Remote',
+    duration: '2024 – Present',
+    points: [
+      'Designed 100+ social media creatives for promotions, events, and business branding.',
+      'Edited Instagram reels, YouTube intros, and promotional videos with transitions and synced audio.',
+      'Created brand identities including logos and style guides for startups and local businesses.',
+      'Developed YouTube thumbnails for tech channels, increasing viewer engagement.',
+    ],
+  },
+];
+
 const ExperienceSection = () => {
   return (
     <section id="experience" className="bg-card/50 animate-fade-in">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-6xl font-headline font-bold text-center mb-12 uppercase">Experience</h2>
-        <div className="max-w-3xl mx-auto">
-          <Card className="bg-card border-primary/20 shadow-lg">
-            <CardHeader>
-              <div className="flex items-center gap-4">
-                <Briefcase className="w-8 h-8 text-accent"/>
-                <div>
-                  <CardTitle className="text-2xl font-bold font-headline text-primary">Design & Development Intern</CardTitle>
-                  <p className="text-lg text-foreground/80">Koushiki Innovision</p>
-                  <p className="text-md text-accent">Jan 2025 – June 2025</p>
+        <div className="max-w-3xl mx-auto space-y-8">
+          {experiences.map((exp, index) => (
+            <Card key={index} className="bg-card border-primary/20 shadow-lg">
+              <CardHeader>
+                <div className="flex items-start gap-4">
+                  <Briefcase className="w-8 h-8 text-accent mt-1"/>
+                  <div>
+                    <CardTitle className="text-2xl font-bold font-headline text-primary">{exp.title}</CardTitle>
+                    <p className="text-lg text-foreground/80">{exp.company}</p>
+                    <p className="text-md text-accent">{exp.duration}</p>
+                  </div>
                 </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <ul className="list-disc list-inside space-y-2 text-foreground/90 text-lg">
-                <li>Designed customizable Ludo game with educational features.</li>
-                <li>Built theme selector, multi-dice logic, and animations.</li>
-                <li>Hands-on experience with Unity, Blender 3D, UI/UX, and deployment.</li>
-              </ul>
-            </CardContent>
-          </Card>
+              </CardHeader>
+              <CardContent>
+                <ul className="list-disc list-inside space-y-2 text-foreground/90 text-lg">
+                  {exp.points.map((point, i) => (
+                    <li key={i}>{point}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
