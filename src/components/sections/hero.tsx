@@ -28,7 +28,7 @@ const HeroSection = () => {
           <TypingAnimation />
         </div>
         <p className="max-w-2xl mx-auto mt-6 text-lg text-foreground/80 leading-relaxed">
-          Welcome to my Online Portfolio! I am a passionate Graphic Designer & Full-Stack Developer, blending creative vision with technical skill. I craft digital experiences and stunning visuals that bring ideas to life. Explore my work and let’s build something amazing together.
+          I am a passionate Graphic Designer & Full-Stack Developer, blending creative vision with technical skill. I craft digital experiences and stunning visuals that bring ideas to life. Explore my work and let’s build something amazing together.
         </p>
       </div>
     </section>
