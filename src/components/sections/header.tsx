@@ -47,7 +47,7 @@ const Header = () => {
           <Link href="#home" className="flex items-center gap-2 text-xl font-bold uppercase font-headline group">
               <Sparkle className="w-5 h-5 text-accent transition-all duration-300 -rotate-45 group-hover:rotate-0 group-hover:scale-125" />
               <span>
-                <span className="font-script text-accent text-3xl normal-case">Vipul</span>
+                <span className="font-script text-accent text-3xl normal-case mr-2">Vipul</span>
                 <span className="text-primary">Vadhe</span>
               </span>
           </Link>
