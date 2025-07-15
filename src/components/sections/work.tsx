@@ -4,13 +4,6 @@ import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import {
   Dialog,
   DialogContent,
   DialogHeader,
@@ -303,6 +296,7 @@ const WorkSection = () => {
                               </div>
                             </DialogTrigger>
                             <DialogContent className="max-w-4xl h-auto bg-transparent border-none shadow-none p-0">
+                               <DialogTitle className="sr-only">{`${work.title} - Image ${i + 1}`}</DialogTitle>
                                <Image
                                   src={image.src}
                                   alt={`${work.title} - Image ${i + 1}`}
