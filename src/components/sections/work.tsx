@@ -117,17 +117,17 @@ const developerProjects = [
 
 const designWorks = [
   { 
-    title: 'Poster Design', 
-    coverImage: 'https://placehold.co/400x600.png', 
+    title: 'Sample 1', 
+    coverImage: 'https://placehold.co/400x400.png', 
     hint: 'poster design',
     images: [
-      { src: 'https://placehold.co/800x1200.png', hint: 'poster design' },
-      { src: 'https://placehold.co/800x1200.png', hint: 'event poster' },
-      { src: 'https://placehold.co/800x1200.png', hint: 'movie poster' },
+      { src: 'https://placehold.co/800x800.png', hint: 'poster design' },
+      { src: 'https://placehold.co/800x800.png', hint: 'event poster' },
+      { src: 'https://placehold.co/800x800.png', hint: 'movie poster' },
     ]
   },
   { 
-    title: 'Logo Design', 
+    title: 'Sample 2', 
     coverImage: 'https://placehold.co/400x400.png',
     hint: 'logo design',
     images: [
@@ -137,43 +137,43 @@ const designWorks = [
     ]
   },
   { 
-    title: 'Branding Mockup', 
-    coverImage: 'https://placehold.co/600x400.png', 
+    title: 'Sample 3', 
+    coverImage: 'https://placehold.co/400x400.png', 
     hint: 'branding identity',
     images: [
-      { src: 'https://placehold.co/1200x800.png', hint: 'stationery mockup' },
-      { src: 'https://placehold.co/1200x800.png', hint: 'brand guide' },
-      { src: 'https://placehold.co/1200x800.png', hint: 'product branding' },
+      { src: 'https://placehold.co/800x800.png', hint: 'stationery mockup' },
+      { src: 'https://placehold.co/800x800.png', hint: 'brand guide' },
+      { src: 'https://placehold.co/800x800.png', hint: 'product branding' },
     ]
   },
   { 
-    title: 'Social Media Reel Cover', 
-    coverImage: 'https://placehold.co/400x700.png', 
+    title: 'Sample 4', 
+    coverImage: 'https://placehold.co/400x400.png', 
     hint: 'social media',
     images: [
-      { src: 'https://placehold.co/800x1400.png', hint: 'instagram reel' },
-      { src: 'https://placehold.co/800x1400.png', hint: 'tiktok cover' },
-      { src: 'https://placehold.co/800x1400.png', hint: 'youtube short' },
+      { src: 'https://placehold.co/800x800.png', hint: 'instagram reel' },
+      { src: 'https://placehold.co/800x800.png', hint: 'tiktok cover' },
+      { src: 'https://placehold.co/800x800.png', hint: 'youtube short' },
     ]
   },
   { 
-    title: 'Logo Collection', 
-    coverImage: 'https://placehold.co/600x400.png', 
+    title: 'Sample 5', 
+    coverImage: 'https://placehold.co/400x400.png', 
     hint: 'logo collection',
     images: [
-      { src: 'https://placehold.co/1200x800.png', hint: 'assorted logos' },
-      { src: 'https://placehold.co/1200x800.png', hint: 'logo variations' },
-      { src: 'https://placehold.co/1200x800.png', hint: 'logo concepts' },
+      { src: 'https://placehold.co/800x800.png', hint: 'assorted logos' },
+      { src: 'https://placehold.co/800x800.png', hint: 'logo variations' },
+      { src: 'https://placehold.co/800x800.png', hint: 'logo concepts' },
     ]
   },
   { 
-    title: 'Poster Series', 
-    coverImage: 'https://placehold.co/400x500.png', 
+    title: 'Sample 6', 
+    coverImage: 'https://placehold.co/400x400.png', 
     hint: 'poster series',
     images: [
-      { src: 'https://placehold.co/800x1000.png', hint: 'minimalist poster' },
-      { src: 'https://placehold.co/800x1000.png', hint: 'typographic poster' },
-      { src: 'https://placehold.co/800x1000.png', hint: 'abstract poster' },
+      { src: 'https://placehold.co/800x800.png', hint: 'minimalist poster' },
+      { src: 'https://placehold.co/800x800.png', hint: 'typographic poster' },
+      { src: 'https://placehold.co/800x800.png', hint: 'abstract poster' },
     ]
   },
 ];
@@ -265,17 +265,17 @@ const WorkSection = () => {
               {designWorks.map((work, index) => (
                 <Dialog key={index}>
                   <DialogTrigger asChild>
-                    <div className="relative rounded-lg overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-2 cursor-pointer">
+                    <div className="relative rounded-lg overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-2 cursor-pointer aspect-square">
                       <Image
                         src={work.coverImage}
                         alt={work.title}
                         width={400}
-                        height={600}
+                        height={400}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         data-ai-hint={work.hint}
                       />
                       <div className="absolute inset-0 bg-black/40 group-hover:bg-accent/70 transition-colors duration-300 flex items-center justify-center p-4">
-                         <span className="text-primary text-lg font-bold text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Gallery</span>
+                         <span className="text-primary text-lg font-bold text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">{work.title}</span>
                       </div>
                     </div>
                   </DialogTrigger>
@@ -289,11 +289,11 @@ const WorkSection = () => {
                           <CarouselItem key={i}>
                             <div className="p-1">
                               <Card className="bg-transparent border-0">
-                                <CardContent className="flex aspect-video items-center justify-center p-0 relative">
+                                <CardContent className="flex aspect-square items-center justify-center p-0 relative">
                                   <Image
                                     src={image.src}
                                     alt={`${work.title} - Image ${i + 1}`}
-                                    width={1200}
+                                    width={800}
                                     height={800}
                                     className="w-full h-full object-contain rounded-lg"
                                     data-ai-hint={image.hint}
