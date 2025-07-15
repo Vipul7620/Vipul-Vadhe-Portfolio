@@ -20,7 +20,7 @@ const HeroSection = () => {
 
       <div className="relative z-10 p-4 animate-fade-in">
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-headline font-extrabold tracking-tighter">
-          <span className="font-script text-accent text-7xl md:text-9xl lg:text-[10rem] block -mb-4 md:-mb-8">VIPUL</span>
+          <span className="font-script text-accent text-7xl md:text-9xl lg:text-[10rem] block -mb-4 md:-mb-8">Vipul</span>
           PORTFOLIO
         </h1>
         <p className="text-2xl md:text-3xl font-bold tracking-widest uppercase font-headline mt-4">
