@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const developerProjects = [
   {
@@ -46,57 +47,60 @@ const WorkSection = () => {
           <span className="absolute -bottom-2 left-0 w-full h-1 bg-accent"></span>
         </h2>
 
-        {/* Developer Projects */}
-        <div className="mb-20">
-          <h3 className="text-3xl font-headline font-bold mb-8 text-center">Developer Projects</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-            {developerProjects.map((project) => (
-              <Card key={project.title} className="bg-background/80 border-primary/20 overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-2">
-                <div className="relative">
+        <Tabs defaultValue="developer" className="w-full">
+          <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto bg-card/80 border-primary/20 mb-8">
+            <TabsTrigger value="developer" className="font-headline text-lg">Developer Projects</TabsTrigger>
+            <TabsTrigger value="designer" className="font-headline text-lg">Design Works</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="developer">
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+              {developerProjects.map((project) => (
+                <Card key={project.title} className="bg-card/80 border-primary/20 overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-2">
+                  <div className="relative">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={600}
+                      height={400}
+                      className="object-cover w-full h-64 transition-transform duration-300 group-hover:scale-105"
+                      data-ai-hint={project.hint}
+                    />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-accent/70 transition-colors duration-300 flex items-center justify-center">
+                      <span className="text-primary text-lg font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Project</span>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="font-headline text-primary">{project.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-foreground/80">{project.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="designer">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {designWorks.map((work, index) => (
+                <div key={index} className="relative rounded-lg overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-2">
                   <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={600}
-                    height={400}
-                    className="object-cover w-full h-64 transition-transform duration-300 group-hover:scale-105"
-                    data-ai-hint={project.hint}
+                    src={work.image}
+                    alt={work.title}
+                    width={400}
+                    height={600}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    data-ai-hint={work.hint}
                   />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-accent/70 transition-colors duration-300 flex items-center justify-center">
-                    <span className="text-primary text-lg font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Project</span>
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-accent/70 transition-colors duration-300 flex items-center justify-center p-4">
+                    <span className="text-primary text-lg font-bold text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Full Design</span>
                   </div>
                 </div>
-                <CardHeader>
-                  <CardTitle className="font-headline text-primary">{project.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-foreground/80">{project.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Design Works */}
-        <div>
-          <h3 className="text-3xl font-headline font-bold mb-8 text-center">Design Works</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {designWorks.map((work, index) => (
-              <div key={index} className="relative rounded-lg overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-2">
-                <Image
-                  src={work.image}
-                  alt={work.title}
-                  width={400}
-                  height={600}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  data-ai-hint={work.hint}
-                />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-accent/70 transition-colors duration-300 flex items-center justify-center p-4">
-                  <span className="text-primary text-lg font-bold text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Full Design</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+              ))}
+            </div>
+          </TabsContent>
+        </Tabs>
       </div>
     </section>
   );
