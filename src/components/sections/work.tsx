@@ -22,6 +22,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, CheckCircle2 } from 'lucide-react';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const developerProjects = [
   {
@@ -124,6 +125,8 @@ const designWorks = [
       { src: 'https://placehold.co/800x800.png', hint: 'poster design' },
       { src: 'https://placehold.co/800x800.png', hint: 'event poster' },
       { src: 'https://placehold.co/800x800.png', hint: 'movie poster' },
+      { src: 'https://placehold.co/800x800.png', hint: 'creative poster' },
+      { src: 'https://placehold.co/800x800.png', hint: 'artistic poster' },
     ]
   },
   { 
@@ -151,9 +154,9 @@ const designWorks = [
     coverImage: 'https://placehold.co/400x400.png', 
     hint: 'social media',
     images: [
-      { src: 'https://placehold.co/800x800.png', hint: 'instagram reel' },
-      { src: 'https://placehold.co/800x800.png', hint: 'tiktok cover' },
-      { src: 'https://placehold.co/800x800.png', hint: 'youtube short' },
+      { src: 'https://placehold.co/800x800.png', hint: 'instagram post' },
+      { src: 'https://placehold.co/800x800.png', hint: 'facebook ad' },
+      { src: 'https://placehold.co/800x800.png', hint: 'twitter graphic' },
     ]
   },
   { 
@@ -279,34 +282,39 @@ const WorkSection = () => {
                       </div>
                     </div>
                   </DialogTrigger>
-                  <DialogContent className="sm:max-w-3xl w-full bg-card/90 border-primary/30 p-4">
+                  <DialogContent className="max-w-5xl h-[90vh] bg-card/90 border-primary/30 p-4 flex flex-col">
                      <DialogHeader>
                       <DialogTitle className="font-headline text-3xl text-primary">{work.title}</DialogTitle>
                     </DialogHeader>
-                    <Carousel className="w-full">
-                      <CarouselContent>
+                    <ScrollArea className="flex-grow">
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-1 pr-4">
                         {work.images.map((image, i) => (
-                          <CarouselItem key={i}>
-                            <div className="p-1">
-                              <Card className="bg-transparent border-0">
-                                <CardContent className="flex aspect-square items-center justify-center p-0 relative">
-                                  <Image
-                                    src={image.src}
-                                    alt={`${work.title} - Image ${i + 1}`}
-                                    width={800}
-                                    height={800}
-                                    className="w-full h-full object-contain rounded-lg"
-                                    data-ai-hint={image.hint}
-                                  />
-                                </CardContent>
-                              </Card>
-                            </div>
-                          </CarouselItem>
+                          <Dialog key={i}>
+                            <DialogTrigger asChild>
+                              <div className="relative rounded-lg overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-1 cursor-pointer aspect-square">
+                                <Image
+                                  src={image.src}
+                                  alt={`${work.title} - Image ${i + 1}`}
+                                  layout="fill"
+                                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                  data-ai-hint={image.hint}
+                                />
+                                <div className="absolute inset-0 bg-black/20 group-hover:bg-accent/50 transition-colors duration-300" />
+                              </div>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-4xl h-auto bg-transparent border-none shadow-none p-0">
+                               <Image
+                                  src={image.src}
+                                  alt={`${work.title} - Image ${i + 1}`}
+                                  width={1200}
+                                  height={1200}
+                                  className="w-full h-full object-contain rounded-lg"
+                                />
+                            </DialogContent>
+                          </Dialog>
                         ))}
-                      </CarouselContent>
-                      <CarouselPrevious className="left-2" />
-                      <CarouselNext className="right-2" />
-                    </Carousel>
+                      </div>
+                    </ScrollArea>
                   </DialogContent>
                 </Dialog>
               ))}
