@@ -63,7 +63,7 @@ const Header = () => {
               >
                 {item.name}
                 {activeSection === item.href && 
-                  <span className="absolute bottom-1 left-0 w-full h-0.5 bg-accent"></span>
+                  <span className="absolute bottom-1 left-0 w-full h-0.5 bg-accent animate-scale-in"></span>
                 }
               </Link>
             ))}
