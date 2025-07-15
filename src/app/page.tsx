@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -12,14 +13,16 @@ import ContactSection from '@/components/sections/contact';
 import Footer from '@/components/sections/footer';
 import Preloader from '@/components/ui/preloader';
 import { cn } from '@/lib/utils';
+import AnimatedBackground from '@/components/ui/animated-background';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
 
   return (
     <>
+      <AnimatedBackground />
       {loading && <Preloader onLoadingComplete={() => setLoading(false)} />}
-      <div className={cn("flex flex-col min-h-screen transition-opacity duration-500", loading ? "opacity-0" : "opacity-100")}>
+      <div className={cn("relative z-10 flex flex-col min-h-screen transition-opacity duration-500", loading ? "opacity-0" : "opacity-100")}>
         <Header />
         <main>
           <HeroSection />

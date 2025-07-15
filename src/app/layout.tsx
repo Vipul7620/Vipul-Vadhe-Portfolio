@@ -1,7 +1,6 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
-import AnimatedBackground from '@/components/ui/animated-background';
 
 export const metadata: Metadata = {
   title: 'Vipul Vadhe | Graphic Designer & Full-Stack Developer',
@@ -21,7 +20,6 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&family=Belleza&family=Caveat:wght@400;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body bg-background text-foreground antialiased">
-        <AnimatedBackground />
         <div className="relative z-10">
           {children}
         </div>
