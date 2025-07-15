@@ -5,37 +5,43 @@ import { Button } from '@/components/ui/button';
 import { Sparkles, Download, Send } from 'lucide-react';
 import TypingAnimation from '@/components/ui/typing-animation';
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 
 
 const HeroSection = () => {
+  const [sparkles, setSparkles] = useState<any[]>([]);
 
-  const sparkles = useMemo(() => {
-    const smallSparkles = Array.from({ length: 25 }).map((_, i) => ({
-      id: `small-${i}`,
-      top: `${Math.random() * 100}%`,
-      left: `${Math.random() * 100}%`,
-      width: `${Math.random() * 12 + 4}px`,
-      height: `${Math.random() * 12 + 4}px`,
-      color: Math.random() > 0.5 ? 'text-accent' : 'text-primary',
-      animationDelay: `${Math.random() * 4}s`,
-      opacity: `${Math.random() * 0.5 + 0.5}`,
-    }));
+  useEffect(() => {
+    const generateSparkles = () => {
+      const smallSparkles = Array.from({ length: 25 }).map((_, i) => ({
+        id: `small-${i}`,
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        width: `${Math.random() * 12 + 4}px`,
+        height: `${Math.random() * 12 + 4}px`,
+        color: Math.random() > 0.5 ? 'text-accent' : 'text-primary',
+        animationDelay: `${Math.random() * 4}s`,
+        opacity: `${Math.random() * 0.5 + 0.5}`,
+      }));
+  
+      const bigSparkles = Array.from({ length: 4 }).map((_, i) => ({
+        id: `big-${i}`,
+        top: `${Math.random() * 90}%`,
+        left: `${Math.random() * 90}%`,
+        width: `${Math.random() * 20 + 20}px`,
+        height: `${Math.random() * 20 + 20}px`,
+        color: Math.random() > 0.5 ? 'text-accent' : 'text-primary',
+        animationDelay: `${Math.random() * 5}s`,
+        opacity: `${Math.random() * 0.6 + 0.4}`,
+      }));
+      
+      setSparkles([...smallSparkles, ...bigSparkles]);
+    };
 
-    const bigSparkles = Array.from({ length: 4 }).map((_, i) => ({
-      id: `big-${i}`,
-      top: `${Math.random() * 90}%`,
-      left: `${Math.random() * 90}%`,
-      width: `${Math.random() * 20 + 20}px`,
-      height: `${Math.random() * 20 + 20}px`,
-      color: Math.random() > 0.5 ? 'text-accent' : 'text-primary',
-      animationDelay: `${Math.random() * 5}s`,
-      opacity: `${Math.random() * 0.6 + 0.4}`,
-    }));
-
-    return [...smallSparkles, ...bigSparkles];
+    generateSparkles();
   }, []);
+
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
