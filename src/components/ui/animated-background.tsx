@@ -1,5 +1,5 @@
 'use client';
-import { useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 const Starfield = ({
   starCount = 500,
@@ -10,21 +10,21 @@ const Starfield = ({
   starColor: string;
   className: string;
 }) => {
-  const stars = useMemo(() => {
+  const [stars, setStars] = useState<React.CSSProperties>({});
+
+  useEffect(() => {
     let styles = {};
     for (let i = 0; i < starCount; i++) {
       const x = Math.random() * 2000;
       const y = Math.random() * 2000;
-      const size = Math.random() + 1;
-
-      // Using a CSS variable for the color
+      
       styles = {
         ...styles,
         [`${x}px ${y}px var(${starColor})`]: '',
       };
     }
     const styleString = Object.keys(styles).join(', ');
-    return { boxShadow: styleString };
+    setStars({ boxShadow: styleString });
   }, [starCount, starColor]);
 
   return <div className={className} style={stars}></div>;
