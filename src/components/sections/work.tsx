@@ -326,16 +326,17 @@ const WorkSection = () => {
                       <DialogTitle className="font-headline text-3xl text-primary">{work.title}</DialogTitle>
                     </DialogHeader>
                     <ScrollArea className="flex-grow">
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-1 pr-4">
+                      <div className="columns-2 md:columns-3 gap-4 space-y-4 p-1 pr-4">
                         {work.images.map((image, i) => (
                           <Dialog key={i}>
                             <DialogTrigger asChild>
-                              <div className="relative rounded-lg overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-1 cursor-pointer aspect-square">
+                              <div className="break-inside-avoid relative rounded-lg overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-1 cursor-pointer">
                                 <Image
                                   src={image.src}
                                   alt={`${work.title} - Image ${i + 1}`}
-                                  layout="fill"
-                                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                  width={800}
+                                  height={1200}
+                                  className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
                                   data-ai-hint={image.hint}
                                 />
                                 <div className="absolute inset-0 bg-black/20 group-hover:bg-accent/50 transition-colors duration-300" />
