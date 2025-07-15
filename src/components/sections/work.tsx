@@ -198,10 +198,10 @@ const WorkSection = () => {
           <span className="absolute -bottom-2 left-0 w-full h-1 bg-accent"></span>
         </h2>
 
-        <Tabs defaultValue="developer" className="w-full">
+        <Tabs defaultValue="designer" className="w-full">
           <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto bg-transparent border border-primary/20 rounded-lg mb-8 p-0 h-auto">
-            <TabsTrigger value="developer" className="font-headline text-lg py-2 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground data-[state=inactive]:text-muted-foreground hover:bg-accent/10 hover:text-primary transition-colors duration-300 rounded-l-md">Developer Projects</TabsTrigger>
-            <TabsTrigger value="designer" className="font-headline text-lg py-2 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground data-[state=inactive]:text-muted-foreground hover:bg-accent/10 hover:text-primary transition-colors duration-300 rounded-r-md">Design Works</TabsTrigger>
+            <TabsTrigger value="designer" className="font-headline text-lg py-2 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground data-[state=inactive]:text-muted-foreground hover:bg-accent/10 hover:text-primary transition-colors duration-300 rounded-l-md">Design Works</TabsTrigger>
+            <TabsTrigger value="developer" className="font-headline text-lg py-2 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground data-[state=inactive]:text-muted-foreground hover:bg-accent/10 hover:text-primary transition-colors duration-300 rounded-r-md">Developer Projects</TabsTrigger>
           </TabsList>
 
           <TabsContent value="developer">
