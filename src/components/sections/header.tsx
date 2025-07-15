@@ -63,7 +63,7 @@ const Header = () => {
               >
                 {item.name}
                 {activeSection === item.href && 
-                  <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-accent"></span>
+                  <span className="absolute bottom-1 left-0 w-full h-0.5 bg-accent"></span>
                 }
               </Link>
             ))}
@@ -83,8 +83,9 @@ const Header = () => {
               </SheetTrigger>
               <SheetContent side="right" className="bg-background border-l-primary/20 w-[250px]">
                 <div className="flex flex-col space-y-6 pt-16">
-                   <Link href="#home" className="text-2xl font-bold uppercase font-headline self-center">
-                    Vipul Vadhe
+                   <Link href="#home" className="text-2xl font-bold self-center">
+                     <span className="font-script text-accent text-3xl normal-case mr-2">Vipul</span>
+                     <span className="font-script text-primary text-3xl normal-case">Vadhe</span>
                   </Link>
                   {navItems.map((item) => (
                     <SheetClose key={item.name} asChild>
