@@ -44,9 +44,12 @@ const Header = () => {
     <header className={cn("sticky top-0 z-50 transition-all duration-300", isScrolled ? "bg-background/80 backdrop-blur-sm shadow-lg" : "bg-transparent")}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <Link href="#home" className="text-xl font-bold uppercase font-headline group">
-              Vipul Vadhe
-              <div className="h-0.5 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"/>
+          <Link href="#home" className="flex items-center gap-2 text-xl font-bold uppercase font-headline group">
+              <Sparkle className="w-5 h-5 text-accent transition-all duration-300 -rotate-45 group-hover:rotate-0 group-hover:scale-125" />
+              <span>
+                <span className="font-script text-accent text-3xl normal-case">Vipul</span>
+                <span className="text-primary">Vadhe</span>
+              </span>
           </Link>
           
           <nav className="hidden md:flex items-center gap-1">
