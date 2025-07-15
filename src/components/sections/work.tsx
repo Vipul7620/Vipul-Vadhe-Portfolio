@@ -16,18 +16,18 @@ import { ExternalLink, CheckCircle2 } from 'lucide-react';
 
 const developerProjects = [
   {
-    title: 'AI Healthcare Bot',
-    description: 'A conversational AI to assist with healthcare queries, disease prediction, and preventive measures.',
+    title: 'This Portfolio Website',
+    description: 'A modern, animated portfolio built with Next.js and Tailwind CSS to showcase my skills and projects.',
     image: 'https://placehold.co/600x400.png',
-    hint: 'abstract code',
-    longDescription: 'Developed a conversational AI chatbot to assist users with healthcare queries, provide basic disease risk predictions, and suggest possible preventive measures. Designed for rural healthcare access, ensuring users can get primary guidance before visiting a doctor.',
+    hint: 'portfolio website',
+    longDescription: 'Developed my personal portfolio website from scratch to create a dynamic and visually appealing online presence. The site features a minimal and elegant design with smooth animations, a continuous flowing background, and a responsive layout for all devices.',
     contributions: [
-        'Designed the conversation flow and intents.',
-        'Implemented disease prediction logic based on user symptoms.',
-        'Developed user-friendly UI for interaction.',
-        'Integrated database for storing conversation history and user data securely.',
+        'Designed the entire UI/UX with a focus on a clean, futuristic aesthetic.',
+        'Built with Next.js for server-side rendering and performance.',
+        'Styled with Tailwind CSS and ShadCN UI components.',
+        'Implemented subtle animations and a flowing background for an engaging user experience.',
     ],
-    techStack: ['Python', 'Django', 'NLTK', 'scikit-learn', 'MySQL'],
+    techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'ShadCN UI'],
     liveLink: '#',
   },
   {
@@ -42,7 +42,22 @@ const developerProjects = [
         'Created features for uploading notes, assignments, and announcements.',
         'Ensured secure user authentication and session management.',
     ],
-    techStack: ['PHP', 'HTML', 'CSS', 'JavaScript', 'MySQL'],
+    techStack: ['PHP', 'HTML', 'CSS', 'JavaScript', 'MySQL', 'VS Code', 'XAMPP', 'MySQL Workbench'],
+    liveLink: '#',
+  },
+  {
+    title: 'AI Healthcare Bot',
+    description: 'A conversational AI to assist with healthcare queries, disease prediction, and preventive measures.',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'abstract code',
+    longDescription: 'Developed a conversational AI chatbot to assist users with healthcare queries, provide basic disease risk predictions, and suggest possible preventive measures. Designed for rural healthcare access, ensuring users can get primary guidance before visiting a doctor.',
+    contributions: [
+        'Designed the conversation flow and intents.',
+        'Implemented disease prediction logic based on user symptoms.',
+        'Developed user-friendly UI for interaction.',
+        'Integrated database for storing conversation history and user data securely.',
+    ],
+    techStack: ['Python', 'Django', 'NLTK', 'scikit-learn', 'MySQL', 'VS Code', 'MySQL Workbench'],
     liveLink: '#',
   },
   {
@@ -56,7 +71,7 @@ const developerProjects = [
         'Implemented product listing, search, cart, and order modules.',
         'Developed admin login, CRUD functionalities, and secure data handling.',
     ],
-    techStack: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
+    techStack: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL', 'VS Code', 'XAMPP'],
     liveLink: '#',
   },
   {
@@ -71,6 +86,22 @@ const developerProjects = [
         'Handled user authentication, data storage, and notifications.',
     ],
     techStack: ['Java', 'Android Studio', 'Firebase'],
+    liveLink: '#',
+  },
+  {
+    title: 'Hotel Management System',
+    description: 'A system to streamline hotel operations like booking, check-in/out, and billing.',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'hotel lobby',
+    longDescription: 'Developed a Hotel Management System to streamline operations including room booking, customer check-in/check-out, billing, and room availability management. The system allows hotel staff to efficiently handle guest details, reservations, and payments through a user-friendly interface.',
+    contributions: [
+      'Designed the database schema for managing rooms, customers, bookings, and payments.',
+      'Developed login and authentication modules for admin and staff.',
+      'Implemented CRUD functionalities for room management (add, update, delete rooms).',
+      'Integrated booking functionality with automatic room availability updates.',
+      'Designed invoice and billing modules to generate customer bills upon checkout.',
+    ],
+    techStack: ['PHP', 'HTML', 'CSS', 'JavaScript', 'MySQL', 'VS Code', 'XAMPP', 'MySQL Workbench'],
     liveLink: '#',
   },
 ];
