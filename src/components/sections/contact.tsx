@@ -46,7 +46,7 @@ const ContactSection = () => {
             <CardContent className="p-6 space-y-4">
               <a href="#" className="flex items-center gap-4 group">
                 <MapPin className="w-6 h-6 text-accent" />
-                <span className="text-foreground/90 group-hover:text-primary">Jalgaon, Maharashtra</span>
+                <span className="text-foreground/90 group-hover:text-primary">Pune, Maharashtra</span>
               </a>
               <div className="border-t border-primary/20"></div>
               <a href="tel:+917620403834" className="flex items-center gap-4 group">
