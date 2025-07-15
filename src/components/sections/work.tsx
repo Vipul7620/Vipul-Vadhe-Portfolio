@@ -188,7 +188,7 @@ const WorkSection = () => {
     };
 
   return (
-    <section id="my-work" className="animate-fade-in">
+    <section id="work" className="animate-fade-in">
       {isExploding && <FullscreenConfetti onComplete={() => setIsExploding(false)} />}
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-6xl font-headline font-bold text-center mb-12 uppercase relative inline-block left-1/2 -translate-x-1/2">

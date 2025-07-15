@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Code, Paintbrush } from 'lucide-react';
 import { SkillBadge } from '@/components/ui/skill-badge';
+import ScrollReveal from '@/components/ui/scroll-reveal';
 
 const technicalSkills = {
   "Programming Languages": ["Python", "Java", "PHP", "JavaScript"],
@@ -23,7 +24,15 @@ const designSkills = {
 const SkillsSection = () => {
   return (
     <section id="skills" className="container mx-auto px-4 animate-fade-in">
-      <h2 className="text-4xl md:text-6xl font-headline font-bold text-center mb-12 uppercase">Skills</h2>
+      <h2 className="text-4xl md:text-6xl font-headline font-bold text-center mb-12 uppercase">
+        <ScrollReveal
+            baseOpacity={0.2}
+            enableBlur={false}
+            baseRotation={2}
+        >
+            Skills
+        </ScrollReveal>
+      </h2>
       <div className="grid md:grid-cols-2 gap-12">
         
         <Card className="bg-card/80 border-primary/20">

@@ -25,7 +25,16 @@ const ContactSection = () => {
   return (
     <section id="contact" className="container mx-auto px-4 animate-fade-in">
       <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-6xl font-headline font-bold uppercase">Contact Me</h2>
+        <h2 className="text-4xl md:text-6xl font-headline font-bold uppercase">
+          <ScrollReveal
+                baseOpacity={0.1}
+                enableBlur={true}
+                baseRotation={2}
+                blurStrength={5}
+            >
+              Contact Me
+          </ScrollReveal>
+        </h2>
         <p className="font-script text-accent text-3xl mt-2">
             <ScrollReveal
                 baseOpacity={0.1}
