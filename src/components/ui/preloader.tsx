@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react';
 import { Progress } from '@/components/ui/progress';
 import { cn } from '@/lib/utils';
+import { Sparkles } from 'lucide-react';
 
 interface PreloaderProps {
   onLoadingComplete: () => void;
@@ -42,7 +43,9 @@ const Preloader = ({ onLoadingComplete }: PreloaderProps) => {
         isFadingOut ? "opacity-0" : "opacity-100"
       )}
     >
-      <div className="text-center">
+      <div className="relative text-center">
+        <Sparkles className="absolute -top-8 left-1/4 w-6 h-6 text-accent animate-twinkle" style={{ animationDelay: '0s' }} />
+        <Sparkles className="absolute -bottom-8 right-1/4 w-6 h-6 text-primary animate-twinkle" style={{ animationDelay: '1s' }} />
         <p className="font-script text-2xl text-primary/80 mb-2">Welcome To</p>
         <h1 className="text-6xl md:text-8xl font-headline font-extrabold">
           <span className="font-script text-accent text-7xl md:text-9xl normal-case mr-4">Vipul</span>
