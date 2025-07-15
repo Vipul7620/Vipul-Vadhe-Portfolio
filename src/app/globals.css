@@ -121,6 +121,22 @@
     }
   }
 
+  .animate-pop-rotate {
+    animation: pop-rotate 0.5s ease-out;
+  }
+  
+  @keyframes pop-rotate {
+    0% {
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.5) rotate(180deg);
+    }
+    100% {
+      transform: scale(1) rotate(360deg);
+    }
+  }
+
   .gradient-bg {
     position: fixed;
     top: 0;

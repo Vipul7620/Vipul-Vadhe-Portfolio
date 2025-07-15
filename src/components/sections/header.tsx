@@ -19,6 +19,8 @@ const navItems = [
 const Header = () => {
   const [activeSection, setActiveSection] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isSparkleClicked, setIsSparkleClicked] = useState(false);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,6 +41,14 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleSparkleClick = () => {
+    setIsSparkleClicked(true);
+    setTimeout(() => {
+        setIsSparkleClicked(false);
+    }, 500); // Duration of the animation
+  };
+
 
   return (
     <header className={cn("sticky top-0 z-50 transition-all duration-300", isScrolled ? "bg-background/80 backdrop-blur-sm shadow-lg" : "bg-transparent")}>
@@ -63,7 +73,7 @@ const Header = () => {
               >
                 {item.name}
                 {activeSection === item.href && 
-                  <span className="absolute bottom-1 left-0 w-full h-0.5 bg-accent animate-scale-in"></span>
+                  <span className="absolute bottom-1 left-0 w-full h-0.5 bg-accent origin-left animate-scale-in"></span>
                 }
               </Link>
             ))}
@@ -71,7 +81,9 @@ const Header = () => {
           
           <div className="hidden md:flex items-center gap-2">
             <div className="w-px h-6 bg-primary/30" />
-            <Sparkle className="w-5 h-5 text-accent" />
+             <button onClick={handleSparkleClick} className="focus:outline-none">
+              <Sparkle className={cn("w-5 h-5 text-accent transition-transform", isSparkleClicked && "animate-pop-rotate")} />
+            </button>
           </div>
 
           <div className="md:hidden">
