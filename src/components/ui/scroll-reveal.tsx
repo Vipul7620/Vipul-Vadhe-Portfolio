@@ -24,7 +24,7 @@ const ScrollReveal = ({
   enableBlur = true,
   wordAnimationEnd = 'center 40%',
 }: ScrollRevealProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLSpanElement>(null);
   const [words, setWords] = useState<string[]>([]);
 
   useEffect(() => {
@@ -102,26 +102,27 @@ const ScrollReveal = ({
 
   if (typeof children !== 'string') {
     return (
-        <div ref={containerRef} className={className} style={{
+        <span ref={containerRef} className={className} style={{
             opacity: baseOpacity + (1 - baseOpacity) * progress,
             transform: `rotateX(${baseRotation - baseRotation * progress}deg)`,
             filter: enableBlur ? `blur(${(1 - progress) * blurStrength}px)` : 'none',
-            transition: 'opacity 0.2s, transform 0.2s, filter 0.2s'
+            transition: 'opacity 0.2s, transform 0.2s, filter 0.2s',
+            display: 'inline-block'
         }}>
             {children}
-        </div>
+        </span>
     );
   }
 
   return (
-    <div ref={containerRef} className={cn('whitespace-pre-wrap', className)}>
+    <span ref={containerRef} className={cn('whitespace-pre-wrap', className)}>
       {words.map((word, i) => {
         const start = i / words.length;
         const end = (i + 1) / words.length;
         const wordProg = (wordProgress - start) / (end - start);
         return <Word key={i} progress={Math.max(0, Math.min(1, wordProg))}>{word}</Word>;
       })}
-    </div>
+    </span>
   );
 };
 

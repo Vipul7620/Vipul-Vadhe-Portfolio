@@ -35,7 +35,7 @@ const ContactSection = () => {
               Contact Me
           </ScrollReveal>
         </h2>
-        <p className="font-script text-accent text-3xl mt-2">
+        <div className="font-script text-accent text-3xl mt-2">
             <ScrollReveal
                 baseOpacity={0.1}
                 enableBlur={true}
@@ -44,7 +44,7 @@ const ContactSection = () => {
             >
                 Get In Touch With Me
             </ScrollReveal>
-        </p>
+        </div>
       </div>
       <div className="grid md:grid-cols-2 gap-16 items-start">
         <div className="space-y-6">
