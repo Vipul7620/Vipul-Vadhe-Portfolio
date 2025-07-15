@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Progress } from '@/components/ui/progress';
 import { cn } from '@/lib/utils';
 import { Sparkles } from 'lucide-react';
@@ -36,16 +36,37 @@ const Preloader = ({ onLoadingComplete }: PreloaderProps) => {
     return () => clearInterval(timer);
   }, [onLoadingComplete]);
 
+  const preloaderSparkles = useMemo(() => {
+    return Array.from({ length: 25 }).map((_, i) => ({
+      id: i,
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      width: `${Math.random() * 12 + 4}px`,
+      height: `${Math.random() * 12 + 4}px`,
+      color: Math.random() > 0.5 ? 'text-accent' : 'text-primary',
+      animationDelay: `${Math.random() * 4}s`,
+      opacity: `${Math.random() * 0.5 + 0.5}`,
+    }));
+  }, []);
+
   return (
     <div
       className={cn(
-        "fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background/50 backdrop-blur-sm transition-opacity duration-500",
+        "fixed inset-0 z-[100] flex flex-col items-center justify-center bg-transparent transition-opacity duration-500 overflow-hidden",
         isFadingOut ? "opacity-0" : "opacity-100"
       )}
     >
+      {preloaderSparkles.map(s => (
+        <div 
+          key={s.id}
+          className="absolute animate-twinkle" 
+          style={{ top: s.top, left: s.left, width: s.width, height: s.height, animationDelay: s.animationDelay, opacity: s.opacity }}
+        >
+          <Sparkles className={`w-full h-full ${s.color}`} />
+        </div>
+      ))}
+
       <div className="relative text-center">
-        <Sparkles className="absolute -top-8 left-1/4 w-6 h-6 text-accent animate-twinkle" style={{ animationDelay: '0s' }} />
-        <Sparkles className="absolute -bottom-8 right-1/4 w-6 h-6 text-primary animate-twinkle" style={{ animationDelay: '1s' }} />
         <p className="font-script text-2xl text-primary/80 mb-2">Welcome To</p>
         <h1 className="text-6xl md:text-8xl font-headline font-extrabold">
           <span className="font-script text-accent text-7xl md:text-9xl normal-case mr-4">Vipul</span>
