@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -131,7 +132,7 @@ const WorkSection = () => {
           </TabsList>
 
           <TabsContent value="developer">
-            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {developerProjects.map((project) => (
                 <Dialog key={project.title}>
                   <DialogTrigger asChild>
