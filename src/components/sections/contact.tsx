@@ -9,15 +9,18 @@ import { useToast } from "@/hooks/use-toast";
 import ScrollReveal from '@/components/ui/scroll-reveal';
 
 const ContactSection = () => {
-    const { toast } = useToast()
+    const { toast } = useToast();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        toast({
-          title: "Message Sent!",
-          description: "Thank you for reaching out. I'll get back to you soon.",
-        })
         const form = e.target as HTMLFormElement;
+        const formData = new FormData(form);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const message = formData.get('message');
+        // Redirect to WhatsApp with pre-filled message
+        const whatsappMessage = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+        window.open(`https://wa.me/917620403834?text=${whatsappMessage}`, '_blank');
         form.reset();
     };
 
@@ -52,9 +55,9 @@ const ContactSection = () => {
             Ready to collaborate? Let’s discuss your next project. Drop me a message below!
           </p>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <Input type="text" placeholder="Name" required className="bg-input/80 border-primary/20 focus:ring-accent" />
-            <Input type="email" placeholder="Email" required className="bg-input/80 border-primary/20 focus:ring-accent"/>
-            <Textarea placeholder="Message" required className="bg-input/80 border-primary/20 min-h-[150px] focus:ring-accent"/>
+            <Input name="name" type="text" placeholder="Name" required className="bg-input/80 border-primary/20 focus:ring-accent" />
+            <Input name="email" type="email" placeholder="Email" required className="bg-input/80 border-primary/20 focus:ring-accent"/>
+            <Textarea name="message" placeholder="Message" required className="bg-input/80 border-primary/20 min-h-[150px] focus:ring-accent"/>
             <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg py-6 rounded-full">
               Send Message
             </Button>

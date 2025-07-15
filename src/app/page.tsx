@@ -20,9 +20,21 @@ export default function Home() {
 
   return (
     <>
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="fixed inset-0 w-full h-full object-cover z-0 pointer-events-none"
+        style={{ opacity: 0.5 }}
+      >
+        <source src="/video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
       <AnimatedBackground />
       {loading && <Preloader onLoadingComplete={() => setLoading(false)} />}
-      <div className={cn("relative z-10 flex flex-col min-h-screen transition-opacity duration-500", loading ? "opacity-0" : "opacity-100")}>
+      <div className={cn("relative z-10 flex flex-col min-h-screen transition-opacity duration-500", loading ? "opacity-0" : "opacity-100")}> 
         <Header />
         <main>
           <HeroSection />

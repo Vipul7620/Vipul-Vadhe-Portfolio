@@ -96,7 +96,7 @@ const HeroSection = () => {
         </p>
          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg py-6 px-8 rounded-full transition-transform duration-300 hover:scale-105">
-            <a href="/resume.pdf" download>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
               <Download className="mr-2 h-5 w-5" />
               Download Resume
             </a>

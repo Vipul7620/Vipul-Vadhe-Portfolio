@@ -26,9 +26,9 @@ const AboutSection = () => {
           </Card>
         </div>
         <div className="flex flex-col items-center">
-          <div className="relative group">
+            <div className="relative group">
             <Image
-              src="https://placehold.co/400x400.png"
+              src="/vipul.jpeg"
               alt="Vipul Vadhe Profile Picture"
               width={300}
               height={300}
@@ -36,8 +36,8 @@ const AboutSection = () => {
               data-ai-hint="profile photo"
             />
             <Sparkles className="absolute top-0 left-0 w-8 h-8 text-accent animate-twinkle" />
-             <Sparkles className="absolute bottom-8 right-0 w-6 h-6 text-primary animate-twinkle" style={{ animationDelay: '1s' }} />
-          </div>
+            <Sparkles className="absolute bottom-8 right-0 w-6 h-6 text-primary animate-twinkle" style={{ animationDelay: '1s' }} />
+            </div>
         </div>
       </div>
     </section>
