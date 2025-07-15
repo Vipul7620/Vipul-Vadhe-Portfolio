@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
-import { Mail, MapPin, Phone, Linkedin, Briefcase } from 'lucide-react';
+import { Mail, MapPin, Phone, Linkedin, Briefcase, Github } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast"
 
 const ContactSection = () => {
@@ -64,6 +64,9 @@ const ContactSection = () => {
             <CardContent className="p-6 flex justify-around">
                <a href="https://linkedin.com/in/vipul-vadhe" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                 <Linkedin className="w-8 h-8 text-accent group-hover:scale-110 transition-transform" />
+              </a>
+               <a href="https://github.com/Vipul7620" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                <Github className="w-8 h-8 text-accent group-hover:scale-110 transition-transform" />
               </a>
                <a href="https://portfolio-hazel-one-85.vercel.app" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                 <Briefcase className="w-8 h-8 text-accent group-hover:scale-110 transition-transform" />
