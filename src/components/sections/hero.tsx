@@ -62,7 +62,7 @@ const HeroSection = () => {
                 wordAnimationEnd='bottom bottom'
                 className="font-script text-accent text-7xl md:text-9xl lg:text-[10rem] block -mb-4 md:-mb-8"
             >
-                Vipul
+                ChromatIQ
             </ScrollReveal>
              <ScrollReveal
                 baseOpacity={0}
@@ -72,7 +72,7 @@ const HeroSection = () => {
                 rotationEnd='bottom bottom'
                 wordAnimationEnd='bottom bottom'
             >
-                VADHE
+                VIPUL VADHE
             </ScrollReveal>
         </h1>
         <div className="text-2xl md:text-3xl font-bold tracking-widest uppercase font-headline mt-4 h-10">

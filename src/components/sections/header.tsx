@@ -62,7 +62,7 @@ const Header = () => {
           <Link href="#home" className="flex items-center gap-2 text-xl font-bold group">
               <Sparkle className="w-5 h-5 text-accent transition-all duration-300 -rotate-45 group-hover:rotate-0 group-hover:scale-125" />
               <span className="font-headline">
-                <span className="font-script text-accent text-3xl normal-case mr-2">Vipul</span>
+                <span className="font-script text-accent text-3xl normal-case mr-2">ChromatIQ</span>
                 <span className="font-script text-primary text-3xl normal-case">Vadhe</span>
               </span>
           </Link>
@@ -107,7 +107,7 @@ const Header = () => {
               <SheetContent side="right" className="bg-background border-l-primary/20 w-[250px]">
                 <div className="flex flex-col space-y-6 pt-16">
                    <Link href="#home" className="text-2xl font-bold self-center">
-                     <span className="font-script text-accent text-3xl normal-case mr-2">Vipul</span>
+                     <span className="font-script text-accent text-3xl normal-case mr-2">ChromatIQ</span>
                      <span className="font-script text-primary text-3xl normal-case">Vadhe</span>
                   </Link>
                   {navItems.map((item) => (
