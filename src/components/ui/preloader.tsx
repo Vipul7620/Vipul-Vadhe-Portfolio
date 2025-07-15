@@ -14,6 +14,10 @@ const Preloader = ({ onLoadingComplete }: PreloaderProps) => {
   const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
+    // Random duration between 3000ms and 4000ms
+    const randomDuration = Math.random() * 1000 + 3000;
+    const intervalTime = randomDuration / 100;
+
     const timer = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
@@ -26,7 +30,7 @@ const Preloader = ({ onLoadingComplete }: PreloaderProps) => {
         }
         return prev + 1;
       });
-    }, 50); // 100 steps * 50ms = 5000ms = 5 seconds
+    }, intervalTime); 
 
     return () => clearInterval(timer);
   }, [onLoadingComplete]);
