@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dialog";
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, CheckCircle2 } from 'lucide-react';
+import { ExternalLink, CheckCircle2, Laugh } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 const developerProjects = [
@@ -23,12 +23,13 @@ const developerProjects = [
     description: 'A modern, animated portfolio built with Next.js and Tailwind CSS to showcase my skills and projects.',
     image: 'https://placehold.co/600x400.png',
     hint: 'portfolio website',
-    longDescription: 'Developed my personal portfolio website from scratch to create a dynamic and visually appealing online presence. The site features a minimal and elegant design with smooth animations, a continuous flowing background, and a responsive layout for all devices.',
+    longDescription: 'Wait a second... you\'re already here! You are currently viewing the portfolio project. It\'s a bit meta, isn\'t it?',
     contributions: [
         'Designed the entire UI/UX with a focus on a clean, futuristic aesthetic.',
         'Built with Next.js for server-side rendering and performance.',
         'Styled with Tailwind CSS and ShadCN UI components.',
         'Implemented subtle animations and a flowing background for an engaging user experience.',
+        'Added this cool easter egg you\'re looking at right now!',
     ],
     techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'ShadCN UI'],
     liveLink: '#',
@@ -175,6 +176,19 @@ const designWorks = [
 ];
 
 
+const PoppingSmiley = ({ delay }: { delay: number }) => (
+  <Laugh
+    className="absolute text-accent opacity-0 animate-pop"
+    style={{
+      width: `${Math.random() * 20 + 20}px`,
+      height: `${Math.random() * 20 + 20}px`,
+      left: `${Math.random() * 90}%`,
+      top: `${Math.random() * 90}%`,
+      animationDelay: `${delay}s`,
+    }}
+  />
+);
+
 const WorkSection = () => {
   return (
     <section id="my-work" className="animate-fade-in">
@@ -218,38 +232,67 @@ const WorkSection = () => {
                     </Card>
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-[625px] bg-card border-primary/30">
-                    <DialogHeader>
-                      <DialogTitle className="font-headline text-3xl text-primary">{project.title}</DialogTitle>
-                      <DialogDescription className="text-foreground/80 pt-2">
-                        {project.longDescription}
-                      </DialogDescription>
-                    </DialogHeader>
+                     {project.title === 'This Portfolio Website' ? (
+                       <>
+                        <DialogHeader>
+                          <DialogTitle className="font-headline text-3xl text-primary text-center">{project.title}</DialogTitle>
+                           <DialogDescription className="text-foreground/80 pt-4 text-center text-lg relative">
+                             {project.longDescription}
+                             <div className="absolute inset-0 overflow-hidden">
+                               {[...Array(10)].map((_, i) => (
+                                 <PoppingSmiley key={i} delay={i * 0.2} />
+                               ))}
+                             </div>
+                           </DialogDescription>
+                         </DialogHeader>
+                         <div className="py-2">
+                            <h4 className="font-bold text-lg mb-3 text-primary/90 text-center">Tech Stack</h4>
+                            <div className="flex flex-wrap gap-2 justify-center">
+                              {project.techStack.map(tech => <Badge key={tech} variant="secondary">{tech}</Badge>)}
+                            </div>
+                          </div>
+                         <DialogFooter>
+                          <Button variant="outline" disabled>
+                            You're already here!
+                          </Button>
+                         </DialogFooter>
+                       </>
+                     ) : (
+                       <>
+                        <DialogHeader>
+                          <DialogTitle className="font-headline text-3xl text-primary">{project.title}</DialogTitle>
+                           <DialogDescription className="text-foreground/80 pt-2">
+                             {project.longDescription}
+                           </DialogDescription>
+                         </DialogHeader>
 
-                     <div className="py-2">
-                        <h4 className="font-bold text-lg mb-3 text-primary/90">My Contributions</h4>
-                        <ul className="space-y-2">
-                          {project.contributions.map((point, index) => (
-                            <li key={index} className="flex items-start gap-2">
-                              <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                              <span className="text-foreground/90">{point}</span>
-                            </li>
-                          ))}
-                        </ul>
-                    </div>
+                          <div className="py-2">
+                             <h4 className="font-bold text-lg mb-3 text-primary/90">My Contributions</h4>
+                             <ul className="space-y-2">
+                               {project.contributions.map((point, index) => (
+                                 <li key={index} className="flex items-start gap-2">
+                                   <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                                   <span className="text-foreground/90">{point}</span>
+                                 </li>
+                               ))}
+                             </ul>
+                         </div>
 
-                    <div className="py-2">
-                      <h4 className="font-bold text-lg mb-3 text-primary/90">Tech Stack</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {project.techStack.map(tech => <Badge key={tech} variant="secondary">{tech}</Badge>)}
-                      </div>
-                    </div>
-                    <DialogFooter>
-                      <Button asChild variant="outline">
-                        <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="mr-2 h-4 w-4" /> View Live
-                        </a>
-                      </Button>
-                    </DialogFooter>
+                         <div className="py-2">
+                           <h4 className="font-bold text-lg mb-3 text-primary/90">Tech Stack</h4>
+                           <div className="flex flex-wrap gap-2">
+                             {project.techStack.map(tech => <Badge key={tech} variant="secondary">{tech}</Badge>)}
+                           </div>
+                         </div>
+                         <DialogFooter>
+                           <Button asChild variant="outline">
+                             <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                               <ExternalLink className="mr-2 h-4 w-4" /> View Live
+                             </a>
+                           </Button>
+                         </DialogFooter>
+                       </>
+                     )}
                   </DialogContent>
                 </Dialog>
               ))}
