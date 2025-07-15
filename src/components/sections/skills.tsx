@@ -1,24 +1,22 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Code, Paintbrush } from 'lucide-react';
+import { SkillBadge } from '@/components/ui/skill-badge';
 
 const technicalSkills = {
-  "Programming Languages": ["Python", "Core Java", "PHP", "JavaScript"],
-  "Frontend Development": ["HTML5", "CSS3", "JavaScript", "Bootstrap", "jQuery"],
-  "Backend Development": ["PHP", "Django (Python Framework)"],
-  "Database Management": ["MySQL", "SQLite"],
-  "Frameworks & Tools": ["Django", "Bootstrap", "Spring (learning basics)"],
-  "Cloud & Data Tools": ["AWS Fundamentals", "Azure Fundamentals", "Power BI"],
+  "Programming Languages": ["Python", "Java", "PHP", "JavaScript"],
+  "Frontend Development": ["HTML5", "CSS3", "React", "Next.js", "Tailwind CSS", "Bootstrap", "jQuery"],
+  "Backend Development": ["Node.js", "Django", "Spring"],
+  "Database Management": ["MySQL", "SQLite", "MongoDB"],
+  "Cloud & Data Tools": ["AWS", "Azure", "Power BI", "Firebase"],
   "Version Control": ["Git", "GitHub"],
-  "Software & IDEs": ["Visual Studio Code", "PyCharm", "Eclipse", "Postman"],
+  "Software & IDEs": ["Visual Studio Code", "PyCharm", "Eclipse", "Postman", "Android Studio"],
 };
 
 const designSkills = {
-  "Design Tools": ["Adobe Photoshop", "Adobe Illustrator", "CorelDRAW", "Canva"],
+  "Design Tools": ["Adobe Photoshop", "Adobe Illustrator", "CorelDRAW", "Canva", "Figma"],
   "Video Editing Tools": ["Adobe Premiere Pro", "Filmora", "CapCut"],
-  "Design Areas": ["Logo Design", "Poster Design", "Social Media Creatives", "YouTube Thumbnails", "Branding & Identity Design", "Event & Fest Banners"],
-  "UI/UX Design Basics": ["Figma"],
-  "Other Creative Skills": ["Motion Graphics (basic intros, transitions, typography animation)", "Reels Editing", "Storyboard and Visual Planning"],
+  "Design Areas": ["Logo Design", "Poster Design", "Social Media Creatives", "UI/UX Design", "Branding"],
+  "Other Creative Skills": ["Motion Graphics", "Reels Editing", "Storyboarding"],
 };
 
 
@@ -28,7 +26,6 @@ const SkillsSection = () => {
       <h2 className="text-4xl md:text-6xl font-headline font-bold text-center mb-12 uppercase">Skills</h2>
       <div className="grid md:grid-cols-2 gap-12">
         
-        {/* Technical Skills */}
         <Card className="bg-card border-primary/20">
           <CardHeader>
             <CardTitle className="flex items-center gap-4 text-2xl font-bold font-headline text-primary">
@@ -40,15 +37,14 @@ const SkillsSection = () => {
             {Object.entries(technicalSkills).map(([category, skills]) => (
               <div key={category}>
                 <h4 className="font-bold text-lg mb-2 text-primary/90">{category}</h4>
-                <div className="flex flex-wrap gap-2">
-                  {skills.map(skill => <Badge key={skill} variant="secondary">{skill}</Badge>)}
+                <div className="flex flex-wrap gap-3">
+                  {skills.map(skill => <SkillBadge key={skill} skillName={skill} />)}
                 </div>
               </div>
             ))}
           </CardContent>
         </Card>
 
-        {/* Design Skills */}
         <Card className="bg-card border-primary/20">
           <CardHeader>
             <CardTitle className="flex items-center gap-4 text-2xl font-bold font-headline text-primary">
@@ -60,8 +56,8 @@ const SkillsSection = () => {
             {Object.entries(designSkills).map(([category, skills]) => (
               <div key={category}>
                 <h4 className="font-bold text-lg mb-2 text-primary/90">{category}</h4>
-                <div className="flex flex-wrap gap-2">
-                  {skills.map(skill => <Badge key={skill} variant="secondary">{skill}</Badge>)}
+                <div className="flex flex-wrap gap-3">
+                  {skills.map(skill => <SkillBadge key={skill} skillName={skill} />)}
                 </div>
               </div>
             ))}
