@@ -69,13 +69,241 @@ const SvgIcon = ({ children, viewBox = "0 0 24 24" }: { children: React.ReactNod
       Storyboarding: <SvgIcon><rect x="3" y="3" width="7" height="7" rx="1" stroke="#2ECC71" strokeWidth="2"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="#2ECC71" strokeWidth="2"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="#2ECC71" strokeWidth="2"/><path d="M14 17h7" stroke="#2ECC71" strokeWidth="2"/></SvgIcon>,
   };
   
+
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+
+// Info for all graphic design skills
+const graphicDesignSkillInfo: Record<string, { title: string; description: string }> = {
+};
+
+// Info for all technical skills
+const technicalSkillInfo: Record<string, { title: string; description: string }> = {
+  // Programming Languages
+  "Python": {
+    title: "Python",
+    description: "Learned during MCA/BSc CS and through self-study. Used for automation, data analysis, and backend development in academic and personal projects. Future plans: Explore advanced AI/ML and web frameworks.",
+  },
+  "Java": {
+    title: "Java",
+    description: "Studied in MCA/BSc CS. Used for OOP concepts, Android development, and backend systems. Future plans: Deepen Spring Boot and enterprise app skills.",
+  },
+  "PHP": {
+    title: "PHP",
+    description: "Learned in MCA/BSc CS and used for web backend development in projects like Cloud Classroom and BookStore. Future plans: Explore modern PHP frameworks and APIs.",
+  },
+  "JavaScript": {
+    title: "JavaScript",
+    description: "Core web language learned in MCA/BSc CS and through hands-on web projects. Used for frontend interactivity and backend (Node.js). Future plans: Master advanced JS and frameworks.",
+  },
+  // Frontend Development
+  "HTML5": {
+    title: "HTML5",
+    description: "Foundation of web development, learned in MCA/BSc CS and used in all web projects. Future plans: Explore semantic HTML and accessibility.",
+  },
+  "CSS3": {
+    title: "CSS3",
+    description: "Learned in MCA/BSc CS and through building responsive UIs. Used for styling, layouts, and animations. Future plans: Master CSS frameworks and advanced animations.",
+  },
+  "React": {
+    title: "React",
+    description: "Self-taught and used in portfolio and other web projects. Used for building dynamic UIs. Future plans: Explore React ecosystem and advanced patterns.",
+  },
+  "Next.js": {
+    title: "Next.js",
+    description: "Learned through building this portfolio and other projects. Used for SSR, routing, and performance. Future plans: Master full-stack features and deployment.",
+  },
+  "Tailwind CSS": {
+    title: "Tailwind CSS",
+    description: "Used for rapid UI development in portfolio and web projects. Future plans: Explore advanced theming and plugin development.",
+  },
+  "Bootstrap": {
+    title: "Bootstrap",
+    description: "Learned in MCA/BSc CS and used for quick, responsive layouts. Future plans: Use for prototyping and legacy projects.",
+  },
+  "jQuery": {
+    title: "jQuery",
+    description: "Learned in MCA/BSc CS and used for DOM manipulation in earlier web projects. Future plans: Maintain for legacy support, focus on modern JS.",
+  },
+  // Backend Development
+  "Node.js": {
+    title: "Node.js",
+    description: "Self-taught for backend APIs and automation. Used in academic and personal projects. Future plans: Explore advanced Node.js and scalable architectures.",
+  },
+  "Django": {
+    title: "Django",
+    description: "Learned through self-study and used for building web apps like AI Healthcare Bot. Future plans: Master Django REST and advanced backend features.",
+  },
+  "Spring": {
+    title: "Spring",
+    description: "Studied in MCA/BSc CS. Used for Java backend development. Future plans: Deepen Spring Boot and microservices expertise.",
+  },
+  // Database Management
+  "MySQL": {
+    title: "MySQL",
+    description: "Learned in MCA/BSc CS and used in most web projects for data storage. Future plans: Explore advanced queries and optimization.",
+  },
+  "SQLite": {
+    title: "SQLite",
+    description: "Used for lightweight database needs in academic and mobile projects. Future plans: Use for prototyping and embedded apps.",
+  },
+  "MongoDB": {
+    title: "MongoDB",
+    description: "Self-taught for NoSQL database needs. Used in web and academic projects. Future plans: Explore advanced aggregation and scaling.",
+  },
+  // Cloud & Data Tools
+  "AWS": {
+    title: "AWS",
+    description: "Learned basics through self-study and used for hosting and cloud experiments. Future plans: Get certified and use advanced AWS services.",
+  },
+  "Azure": {
+    title: "Azure",
+    description: "Studied basics in MCA/BSc CS and used for cloud labs. Future plans: Explore Azure DevOps and cloud solutions.",
+  },
+  "Power BI": {
+    title: "Power BI",
+    description: "Learned in MCA/BSc CS and used for data visualization in academic projects. Future plans: Master dashboarding and data analytics.",
+  },
+  "Firebase": {
+    title: "Firebase",
+    description: "Used for real-time data and authentication in mobile/web projects like Esports Tournament App. Future plans: Explore advanced Firebase features.",
+  },
+  // Version Control
+  "Git": {
+    title: "Git",
+    description: "Learned in MCA/BSc CS and used for all project versioning. Future plans: Master advanced workflows and automation.",
+  },
+  "GitHub": {
+    title: "GitHub",
+    description: "Used for hosting and collaborating on code. Future plans: Explore GitHub Actions and open source contributions.",
+  },
+  // Software & IDEs
+  "Visual Studio Code": {
+    title: "Visual Studio Code",
+    description: "Primary code editor for all projects. Future plans: Explore advanced extensions and productivity tools.",
+  },
+  "PyCharm": {
+    title: "PyCharm",
+    description: "Used for Python development in academic and personal projects. Future plans: Use for larger Python codebases.",
+  },
+  "Eclipse": {
+    title: "Eclipse",
+    description: "Learned in MCA/BSc CS and used for Java development. Future plans: Use for enterprise Java projects.",
+  },
+  "Postman": {
+    title: "Postman",
+    description: "Used for API testing and development in web projects. Future plans: Automate API tests and explore advanced features.",
+  },
+  "Android Studio": {
+    title: "Android Studio",
+    description: "Used for Android app development in academic and personal projects. Future plans: Build more advanced mobile apps.",
+  },
+};
+
 export function SkillBadge({ skillName }: { skillName: string }) {
-    const icon = skillIcons[skillName] || <SvgIcon><path d="M12 2l-2 7h4zM12 22l-2-7h4zM2 12l7 2v-4zM22 12l-7 2v-4z"/></SvgIcon>;
-  
+  const icon = skillIcons[skillName] || (
+    <SvgIcon>
+      <path d="M12 2l-2 7h4zM12 22l-2-7h4zM2 12l7 2v-4zM22 12l-7 2v-4z" />
+    </SvgIcon>
+  );
+
+  // List of all graphic design skills (from designSkills in skills.tsx)
+  const allGraphicDesignSkills = [
+    "Adobe Photoshop",
+    "Adobe Illustrator",
+    "CorelDRAW",
+    "Canva",
+    "Figma",
+    "Adobe Premiere Pro",
+    "Filmora",
+    "CapCut",
+    "Logo Design",
+    "Poster Design",
+    "Social Media Creatives",
+    "UI/UX Design",
+    "Branding",
+    "Motion Graphics",
+    "Reels Editing",
+    "Storyboarding",
+  ];
+
+  // List of all technical skills (from technicalSkills in skills.tsx)
+  const allTechnicalSkills = [
+    // Programming Languages
+    "Python", "Java", "PHP", "JavaScript",
+    // Frontend Development
+    "HTML5", "CSS3", "React", "Next.js", "Tailwind CSS", "Bootstrap", "jQuery",
+    // Backend Development
+    "Node.js", "Django", "Spring",
+    // Database Management
+    "MySQL", "SQLite", "MongoDB",
+    // Cloud & Data Tools
+    "AWS", "Azure", "Power BI", "Firebase",
+    // Version Control
+    "Git", "GitHub",
+    // Software & IDEs
+    "Visual Studio Code", "PyCharm", "Eclipse", "Postman", "Android Studio",
+  ];
+
+  if (allGraphicDesignSkills.includes(skillName) && graphicDesignSkillInfo[skillName]) {
+    const { title, description } = graphicDesignSkillInfo[skillName];
     return (
-      <Badge variant="secondary" className="flex items-center gap-1 pr-3 pl-2 py-1 text-sm bg-secondary hover:bg-secondary/80 transition-colors cursor-pointer border border-primary/20">
-        {icon}
-        <span>{skillName}</span>
-      </Badge>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Badge
+            variant="secondary"
+            className="flex items-center gap-1 pr-3 pl-2 py-1 text-sm bg-secondary hover:bg-secondary/80 transition-colors cursor-pointer border border-primary/20"
+          >
+            {icon}
+            <span>{skillName}</span>
+          </Badge>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{title}</DialogTitle>
+            <DialogDescription>{description}</DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     );
   }
+
+  if (allTechnicalSkills.includes(skillName) && technicalSkillInfo[skillName]) {
+    const { title, description } = technicalSkillInfo[skillName];
+    return (
+      <Dialog>
+        <DialogTrigger asChild>
+          <Badge
+            variant="secondary"
+            className="flex items-center gap-1 pr-3 pl-2 py-1 text-sm bg-secondary hover:bg-secondary/80 transition-colors cursor-pointer border border-primary/20"
+          >
+            {icon}
+            <span>{skillName}</span>
+          </Badge>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{title}</DialogTitle>
+            <DialogDescription>{description}</DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+    );
+  }
+
+  return (
+    <Badge
+      variant="secondary"
+      className="flex items-center gap-1 pr-3 pl-2 py-1 text-sm bg-secondary hover:bg-secondary/80 transition-colors cursor-pointer border border-primary/20"
+    >
+      {icon}
+      <span>{skillName}</span>
+    </Badge>
+  );
+}

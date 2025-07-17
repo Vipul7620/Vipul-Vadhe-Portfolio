@@ -66,9 +66,14 @@ const ContactSection = () => {
         <div className="space-y-6">
           <Card className="bg-card/80 border-primary/20">
             <CardContent className="p-6 space-y-4">
-              <a href="#" className="flex items-center gap-4 group">
+              <a 
+                href="https://www.google.com/maps/place/Pune,+Maharashtra,+India/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-4 group"
+              >
                 <MapPin className="w-6 h-6 text-accent" />
-                <span className="text-foreground/90 group-hover:text-primary">Pune, Maharashtra</span>
+                <span className="text-foreground/90 group-hover:text-primary underline">Pune, Maharashtra</span>
               </a>
               <div className="border-t border-primary/20"></div>
               <a href="tel:+917620403834" className="flex items-center gap-4 group">

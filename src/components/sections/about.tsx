@@ -26,18 +26,22 @@ const AboutSection = () => {
           </Card>
         </div>
         <div className="flex flex-col items-center">
-            <div className="relative group">
+          <div className="relative group flex items-center justify-center">
+            {/* Soft gradient background squircle */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-accent/80 via-primary/60 to-background blur-2xl scale-110 z-0" />
             <Image
-              src="/vipul.jpeg"
+              src="/vipul.png"
               alt="Vipul Vadhe Profile Picture"
-              width={300}
-              height={300}
-              className="rounded-full border-4 border-primary shadow-lg transition-transform duration-300 group-hover:scale-105"
-              data-ai-hint="profile photo"
+              width={320}
+              height={320}
+              className="relative z-10 rounded-3xl border-4 border-accent shadow-2xl object-cover transition-transform duration-300 group-hover:scale-105 bg-background"
+              style={{ background: 'linear-gradient(135deg, #fff 60%, #e0e7ff 100%)' }}
+              data-ai-hint="profile photo main squircle"
+              priority
             />
-            <Sparkles className="absolute top-0 left-0 w-8 h-8 text-accent animate-twinkle" />
-            <Sparkles className="absolute bottom-8 right-0 w-6 h-6 text-primary animate-twinkle" style={{ animationDelay: '1s' }} />
-            </div>
+            <Sparkles className="absolute top-2 left-2 w-10 h-10 text-accent animate-twinkle z-20" />
+            <Sparkles className="absolute bottom-8 right-4 w-8 h-8 text-primary animate-twinkle z-20" style={{ animationDelay: '1s' }} />
+          </div>
         </div>
       </div>
     </section>

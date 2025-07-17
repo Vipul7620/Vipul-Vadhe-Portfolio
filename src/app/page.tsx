@@ -5,10 +5,10 @@ import { useState, useEffect } from 'react';
 import Header from '@/components/sections/header';
 import HeroSection from '@/components/sections/hero';
 import AboutSection from '@/components/sections/about';
-import SkillsSection from '@/components/sections/skills';
-import EducationSection from '@/components/sections/education';
-import ExperienceSection from '@/components/sections/experience';
 import WorkSection from '@/components/sections/work';
+import SkillsSection from '@/components/sections/skills';
+import ExperienceSection from '@/components/sections/experience';
+import EducationSection from '@/components/sections/education';
 import ContactSection from '@/components/sections/contact';
 import Footer from '@/components/sections/footer';
 import Preloader from '@/components/ui/preloader';
@@ -20,7 +20,7 @@ export default function Home() {
 
   return (
     <>
-      {/* Background Video */}
+      {/* Background Video: landing page video during loading, main video after */}
       <video
         autoPlay
         loop
@@ -28,8 +28,9 @@ export default function Home() {
         playsInline
         className="fixed inset-0 w-full h-full object-cover z-0 pointer-events-none"
         style={{ opacity: 0.5 }}
+        key={loading ? 'landing' : 'main'}
       >
-        <source src="/video.mp4" type="video/mp4" />
+        <source src={loading ? "/landing%20page.mp4" : "/2314-157183704_small.mp4"} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <AnimatedBackground />
@@ -40,8 +41,8 @@ export default function Home() {
           <HeroSection />
           <AboutSection />
           <ExperienceSection />
-          <SkillsSection />
           <WorkSection />
+          <SkillsSection />
           <EducationSection />
           <ContactSection />
         </main>
