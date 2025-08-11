@@ -672,57 +672,77 @@ const WorkSection = () => {
                   {/* ...existing code for developer tab if present... */}
                   <TabsContent value="developer">
                     <div className="flex flex-wrap justify-center gap-6 py-6 w-full bg-gradient-to-r from-primary/10 via-transparent to-accent/10 rounded-2xl shadow-inner">
-                      {developerProjects.map((project, idx) => (
-                        <Dialog key={idx}>
-                          <DialogTrigger asChild>
-                            <button className="w-full max-w-md bg-card/80 border-2 border-primary/10 shadow-lg hover:shadow-accent/20 transition-all duration-300 rounded-xl overflow-hidden focus:outline-none">
-                              <div className="flex items-center gap-4 p-4">
-                                <Image src={project.image} alt={project.title + ' preview'} width={64} height={64} className="rounded-lg object-cover w-16 h-16 border border-primary/20" />
-                                <div>
-                                  <span className="text-xl font-bold text-primary block text-left">{project.title}</span>
-                                  <div className="flex flex-wrap gap-1 mt-1">
+                      {developerProjects.map((project, idx) => {
+                        // Special case for Experience at Koushiki Innovision (Ludo game)
+                        const isLudoExperience =
+                          project.title === 'Experience' &&
+                          project.description?.includes('Koushiki Innovision') &&
+                          project.description?.includes('Jan 2025') &&
+                          project.description?.includes('Ludo');
+                        return (
+                          <Dialog key={idx}>
+                            <DialogTrigger asChild>
+                              <button
+                                className="w-full max-w-md bg-card/80 border-2 border-primary/10 shadow-lg hover:shadow-accent/20 transition-all duration-300 rounded-xl overflow-hidden focus:outline-none"
+                                onClick={() => {
+                                  if (
+                                    project.title === 'Experience' &&
+                                    project.description?.includes('Koushiki Innovision') &&
+                                    project.description?.includes('Jan 2025') &&
+                                    project.description?.includes('Ludo')
+                                  ) {
+                                    window.open('https://ludo-learn-play.vercel.app/', '_blank');
+                                  }
+                                }}
+                              >
+                                <div className="flex items-center gap-4 p-4">
+                                  <Image src={project.image} alt={project.title + ' preview'} width={64} height={64} className="rounded-lg object-cover w-16 h-16 border border-primary/20" />
+                                  <div>
+                                    <span className="text-xl font-bold text-primary block text-left">{project.title}</span>
+                                    <div className="flex flex-wrap gap-1 mt-1">
+                                      {project.techStack.map((tech, i) => (
+                                        <Badge key={i} className="bg-accent text-accent-foreground px-2 py-0.5 text-xs font-semibold rounded-full">{tech}</Badge>
+                                      ))}
+                                    </div>
+                                    <p className="text-base text-muted-foreground mt-2 text-left">{project.description}</p>
+                                  </div>
+                                </div>
+                              </button>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-2xl bg-card/95 border-primary/30 p-6 flex flex-col">
+                              <DialogHeader>
+                                <DialogTitle className="font-headline text-3xl text-primary text-center">{project.title}</DialogTitle>
+                              </DialogHeader>
+                              <div className="flex flex-col md:flex-row gap-6 mt-4">
+                                <div className="flex-shrink-0 flex items-center justify-center">
+                                  <Image src={project.image} alt={project.title + ' preview'} width={128} height={128} className="rounded-xl object-cover w-32 h-32 border border-primary/20" />
+                                </div>
+                                <div className="flex-1">
+                                  <div className="flex flex-wrap gap-1 mb-2">
                                     {project.techStack.map((tech, i) => (
                                       <Badge key={i} className="bg-accent text-accent-foreground px-2 py-0.5 text-xs font-semibold rounded-full">{tech}</Badge>
                                     ))}
                                   </div>
-                                  <p className="text-base text-muted-foreground mt-2 text-left">{project.description}</p>
+                                  <p className="text-base text-muted-foreground mb-2">{project.description}</p>
+                                  <ul className="list-disc list-inside text-sm text-primary/90 mb-2">
+                                    {project.contributions && project.contributions.map((item, i) => (
+                                      <li key={i}>{item}</li>
+                                    ))}
+                                  </ul>
+                                  {project.longDescription && <p className="text-sm text-muted-foreground mb-2">{project.longDescription}</p>}
+                                  {project.liveLink && project.liveLink !== '#' && (
+                                    <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                                      <Button variant="outline" className="mt-2 flex items-center gap-2">
+                                        <ExternalLink className="w-4 h-4" /> Live Demo
+                                      </Button>
+                                    </a>
+                                  )}
                                 </div>
                               </div>
-                            </button>
-                          </DialogTrigger>
-                          <DialogContent className="max-w-2xl bg-card/95 border-primary/30 p-6 flex flex-col">
-                            <DialogHeader>
-                              <DialogTitle className="font-headline text-3xl text-primary text-center">{project.title}</DialogTitle>
-                            </DialogHeader>
-                            <div className="flex flex-col md:flex-row gap-6 mt-4">
-                              <div className="flex-shrink-0 flex items-center justify-center">
-                                <Image src={project.image} alt={project.title + ' preview'} width={128} height={128} className="rounded-xl object-cover w-32 h-32 border border-primary/20" />
-                              </div>
-                              <div className="flex-1">
-                                <div className="flex flex-wrap gap-1 mb-2">
-                                  {project.techStack.map((tech, i) => (
-                                    <Badge key={i} className="bg-accent text-accent-foreground px-2 py-0.5 text-xs font-semibold rounded-full">{tech}</Badge>
-                                  ))}
-                                </div>
-                                <p className="text-base text-muted-foreground mb-2">{project.description}</p>
-                                <ul className="list-disc list-inside text-sm text-primary/90 mb-2">
-                                  {project.contributions && project.contributions.map((item, i) => (
-                                    <li key={i}>{item}</li>
-                                  ))}
-                                </ul>
-                                {project.longDescription && <p className="text-sm text-muted-foreground mb-2">{project.longDescription}</p>}
-                                {project.liveLink && project.liveLink !== '#' && (
-                                  <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                                    <Button variant="outline" className="mt-2 flex items-center gap-2">
-                                      <ExternalLink className="w-4 h-4" /> Live Demo
-                                    </Button>
-                                  </a>
-                                )}
-                              </div>
-                            </div>
-                          </DialogContent>
-                        </Dialog>
-                      ))}
+                            </DialogContent>
+                          </Dialog>
+                        );
+                      })}
                     </div>
                   </TabsContent>
                 </Tabs>

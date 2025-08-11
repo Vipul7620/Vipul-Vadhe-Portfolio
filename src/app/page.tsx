@@ -20,19 +20,21 @@ export default function Home() {
 
   return (
     <>
-      {/* Background Video: landing page video during loading, main video after */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="fixed inset-0 w-full h-full object-cover z-0 pointer-events-none"
-        style={{ opacity: 0.5 }}
-        key={loading ? 'landing' : 'main'}
-      >
-        <source src={loading ? "/landing%20page.mp4" : "/2314-157183704_small.mp4"} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      {/* Main background video with 50% opacity (landing page.mp4) */}
+      <div className="fixed inset-0 w-full h-full z-0" style={{ background: '#111' }}>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          style={{ opacity: 0.5, filter: 'brightness(1.1) contrast(1.15)' }}
+          key="main-bg"
+        >
+          <source src="/landing%20page.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <AnimatedBackground />
       {loading && <Preloader onLoadingComplete={() => setLoading(false)} />}
       <div className={cn("relative z-10 flex flex-col min-h-screen transition-opacity duration-500", loading ? "opacity-0" : "opacity-100")}> 

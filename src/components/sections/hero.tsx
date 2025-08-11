@@ -22,11 +22,14 @@ import FullscreenConfetti from '@/components/ui/fullscreen-confetti';
 
 const HeroSection = () => {
   const [stars, setStars] = useState<any[]>([]);
+  const [mounted, setMounted] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [touchPulse, setTouchPulse] = useState(false);
 
   useEffect(() => {
-    const generateStars = () => {
+    setMounted(true);
+    if (typeof window !== 'undefined') {
       const starTypes: ('four' | 'six' | 'eight' | 'sparkle')[] = ['four', 'six', 'eight', 'sparkle'];
-      
       const smallStars = Array.from({ length: 25 }).map((_, i) => ({
         id: `small-${i}`,
         top: `${Math.random() * 100}%`,
@@ -38,7 +41,6 @@ const HeroSection = () => {
         opacity: `${Math.random() * 0.5 + 0.5}`,
         type: starTypes[Math.floor(Math.random() * starTypes.length)],
       }));
-  
       const bigStars = Array.from({ length: 4 }).map((_, i) => ({
         id: `big-${i}`,
         top: `${Math.random() * 90}%`,
@@ -50,24 +52,18 @@ const HeroSection = () => {
         opacity: `${Math.random() * 0.6 + 0.4}`,
         type: starTypes[Math.floor(Math.random() * starTypes.length)],
       }));
-      
       setStars([...smallStars, ...bigStars]);
-    };
-
-    if (typeof window !== 'undefined') {
-        generateStars();
     }
   }, []);
 
+  if (!mounted) return null;
 
-  // Confetti state
-  const [showConfetti, setShowConfetti] = useState(false);
+
+
   const handleResumeClick = () => {
     setShowConfetti(true);
   };
 
-  // Animation state for Get In Touch button
-  const [touchPulse, setTouchPulse] = useState(false);
   const handleTouchClick = () => {
     setTouchPulse(true);
     setTimeout(() => setTouchPulse(false), 600); // duration matches animation
@@ -75,6 +71,18 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
+      {/* Background video for hero section */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        style={{ opacity: 0.5, filter: 'brightness(1.1) contrast(1.1)' }}
+      >
+        <source src="/landing%20page.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
       <div className="absolute inset-0 bg-gradient-to-t from-accent/10 via-background/50 to-background"></div>
       {stars.map(s => (
         <div 

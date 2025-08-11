@@ -58,6 +58,39 @@ const ExperienceSection = () => {
                     <li key={i}>{point}</li>
                   ))}
                 </ul>
+                {/* Add Live Demo button for Koushiki Innovision Ludo game */}
+                {exp.title === 'Design & Development Intern' && exp.company === 'Koushiki Innovision' && exp.duration.includes('Jan 2025') && (
+                  <a
+                    href="https://ludo-learn-play.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block mt-4"
+                  >
+                    <button className="bg-gradient-to-r from-blue-700 via-blue-500 to-indigo-500 hover:from-blue-800 hover:to-indigo-600 text-white font-bold py-2 px-6 rounded-full shadow-lg transition-transform duration-300 hover:scale-105 flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
+                      Live Demo
+                    </button>
+                  </a>
+                )}
+                {/* Button for Freelance Graphic Designer & Video Editor to scroll to My Work - Design Works */}
+                {exp.title === 'Freelance Graphic Designer & Video Editor' && exp.company === 'Remote' && exp.duration.includes('2024') && (
+                  <button
+                    className="bg-gradient-to-r from-pink-600 via-fuchsia-500 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-bold py-2 px-6 rounded-full shadow-lg transition-transform duration-300 hover:scale-105 flex items-center gap-2 mt-4"
+                    onClick={() => {
+                      const el = document.getElementById('work');
+                      if (el) {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    View My Work
+                  </button>
+                )}
               </CardContent>
             </Card>
           ))}
