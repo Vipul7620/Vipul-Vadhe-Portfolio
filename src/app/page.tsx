@@ -44,6 +44,10 @@ export default function Home() {
           <WorkSection />
           <SkillsSection />
           <EducationSection />
+          {/* Certificates Section */}
+          {require('@/components/sections/certificates').default && (
+            require('@/components/sections/certificates').default()
+          )}
           <ContactSection />
         </main>
         <Footer />

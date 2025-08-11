@@ -1,6 +1,7 @@
 
 'use client';
 
+
 import { Button } from '@/components/ui/button';
 import { Download, Send } from 'lucide-react';
 import TypingAnimation from '@/components/ui/typing-animation';
@@ -8,6 +9,15 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { Star } from '@/components/ui/star';
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle
+} from '@/components/ui/dialog';
+// removed duplicate useState import
+import FullscreenConfetti from '@/components/ui/fullscreen-confetti';
 
 
 const HeroSection = () => {
@@ -50,10 +60,22 @@ const HeroSection = () => {
   }, []);
 
 
+  // Confetti state
+  const [showConfetti, setShowConfetti] = useState(false);
+  const handleResumeClick = () => {
+    setShowConfetti(true);
+  };
+
+  // Animation state for Get In Touch button
+  const [touchPulse, setTouchPulse] = useState(false);
+  const handleTouchClick = () => {
+    setTouchPulse(true);
+    setTimeout(() => setTouchPulse(false), 600); // duration matches animation
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-t from-accent/10 via-background/50 to-background"></div>
-      
       {stars.map(s => (
         <div 
           key={s.id}
@@ -63,7 +85,9 @@ const HeroSection = () => {
           <Star type={s.type} className={`w-full h-full ${s.color}`} />
         </div>
       ))}
-
+      {showConfetti && (
+        <FullscreenConfetti onComplete={() => setShowConfetti(false)} />
+      )}
       <div className="relative z-10 p-4 animate-fade-in -mt-20">
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-headline font-extrabold tracking-tighter">
             <ScrollReveal
@@ -94,14 +118,49 @@ const HeroSection = () => {
         <p className="max-w-2xl mx-auto mt-6 text-lg text-foreground/80 leading-relaxed">
           I am a passionate Graphic Designer & Full-Stack Developer, blending creative vision with technical skill. I craft digital experiences and stunning visuals that bring ideas to life. Explore my work and let’s build something amazing together.
         </p>
-         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg py-6 px-8 rounded-full transition-transform duration-300 hover:scale-105">
-            <a href="/VIPUL MILIND VADHE.pdf" target="_blank" rel="noopener noreferrer">
-              <Download className="mr-2 h-5 w-5" />
-              Download Resume
-            </a>
-          </Button>
-          <Button asChild size="lg" variant="outline" className="text-lg py-6 px-8 rounded-full border-primary/40 hover:bg-primary/10 hover:text-primary transition-transform duration-300 hover:scale-105">
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button size="lg" className="bg-gradient-to-r from-blue-700 via-blue-500 to-indigo-500 hover:from-blue-800 hover:to-indigo-600 text-white font-bold text-lg py-6 px-8 rounded-full transition-transform duration-300 hover:scale-105 shadow-lg">
+                <Download className="mr-2 h-5 w-5" />
+                Download Resume
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-md bg-card/95 border-primary/30 p-6 flex flex-col items-center">
+              <DialogHeader>
+                <DialogTitle className="font-headline text-2xl text-primary text-center mb-4">Select Resume</DialogTitle>
+              </DialogHeader>
+              <a
+                href="/VIPUL ALL.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full mb-3 px-4 py-3 rounded-lg bg-gradient-to-r from-blue-700 via-blue-500 to-indigo-500 text-white font-bold flex items-center justify-center gap-2 hover:from-blue-800 hover:to-indigo-600 shadow-lg transition relative overflow-hidden"
+                download
+                onClick={handleResumeClick}
+              >
+                <span className="absolute left-2 top-2 animate-pulse text-yellow-300">★</span>
+                <Download className="h-5 w-5" /> Developer Resume
+              </a>
+              <a
+                href="/VIPUL GD.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full px-4 py-3 rounded-lg bg-gradient-to-r from-pink-600 via-fuchsia-500 to-purple-600 text-white font-bold flex items-center justify-center gap-2 hover:from-pink-700 hover:to-purple-700 shadow-lg transition relative overflow-hidden"
+                download
+                onClick={handleResumeClick}
+              >
+                <span className="absolute right-2 top-2 animate-bounce text-yellow-200">★</span>
+                <Download className="h-5 w-5" /> Graphic Designer Resume
+              </a>
+            </DialogContent>
+          </Dialog>
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className={`text-lg py-6 px-8 rounded-full border-primary/40 hover:bg-primary/10 hover:text-primary transition-transform duration-300 hover:scale-105 ${touchPulse ? 'animate-pulse ring-4 ring-accent/40' : ''}`}
+            onClick={handleTouchClick}
+          >
             <Link href="#contact">
               <Send className="mr-2 h-5 w-5" />
               Get In Touch

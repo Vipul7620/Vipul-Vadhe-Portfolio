@@ -189,7 +189,7 @@
     overflow: hidden;
     z-index: 0;
     background-color: hsl(var(--background));
-    opacity: 0.6;
+    opacity: 1;
   }
 
   .aurora-bg__aurora {
@@ -204,10 +204,10 @@
     height: 80vmax;
     background-image: radial-gradient(
       ellipse at center,
-      hsl(var(--primary) / 0.4),
-      hsl(var(--primary) / 0) 50%
+      hsl(0 0% 100% / 0.08),
+      hsl(0 0% 0% / 0) 50%
     );
-    animation: aurora-1 37s linear infinite both;
+    animation: none;
   }
 
   .aurora-bg__aurora--2 {
@@ -215,10 +215,10 @@
     height: 60vmax;
     background-image: radial-gradient(
         ellipse at center,
-        hsl(var(--accent) / 0.4),
-        hsl(var(--accent) / 0) 50%
+        hsl(0 0% 60% / 0.08),
+        hsl(0 0% 0% / 0) 50%
     );
-    animation: aurora-2 41s linear infinite both;
+    animation: none;
   }
 
   .aurora-bg__aurora--3 {
@@ -226,10 +226,10 @@
     height: 50vmax;
     background-image: radial-gradient(
         ellipse at center,
-        hsl(var(--secondary) / 0.4),
-        hsl(var(--secondary) / 0) 50%
+        hsl(0 0% 20% / 0.08),
+        hsl(0 0% 0% / 0) 50%
     );
-    animation: aurora-3 43s linear infinite both;
+    animation: none;
   }
 
   @keyframes aurora-1 {
