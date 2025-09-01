@@ -9,8 +9,8 @@ import WorkSection from '@/components/sections/work';
 import SkillsSection from '@/components/sections/skills';
 import ExperienceSection from '@/components/sections/experience';
 import EducationSection from '@/components/sections/education';
-import ContactSection from '@/components/sections/contact';
 import Footer from '@/components/sections/footer';
+import ContactSection from '@/components/sections/contact';
 import Preloader from '@/components/ui/preloader';
 import { cn } from '@/lib/utils';
 import AnimatedBackground from '@/components/ui/animated-background';
@@ -39,18 +39,20 @@ export default function Home() {
       {loading && <Preloader onLoadingComplete={() => setLoading(false)} />}
       <div className={cn("relative z-10 flex flex-col min-h-screen transition-opacity duration-500", loading ? "opacity-0" : "opacity-100")}> 
         <Header />
-        <main>
+        <main className="flex flex-col w-full gap-8 md:gap-12 lg:gap-16">
           <HeroSection />
-          <AboutSection />
-          <ExperienceSection />
-          <WorkSection />
-          <SkillsSection />
-          <EducationSection />
-          {/* Certificates Section */}
-          {require('@/components/sections/certificates').default && (
-            require('@/components/sections/certificates').default()
-          )}
-          <ContactSection />
+          <div className="w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-24">
+            <AboutSection />
+            <ExperienceSection />
+            <WorkSection />
+            <SkillsSection />
+            <EducationSection />
+            {/* Certificates Section */}
+            {require('@/components/sections/certificates').default && (
+              require('@/components/sections/certificates').default()
+            )}
+            <ContactSection />
+          </div>
         </main>
         <Footer />
       </div>

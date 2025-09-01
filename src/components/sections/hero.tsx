@@ -127,41 +127,16 @@ const HeroSection = () => {
           I am a passionate Graphic Designer & Full-Stack Developer, blending creative vision with technical skill. I craft digital experiences and stunning visuals that bring ideas to life. Explore my work and let’s build something amazing together.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button size="lg" className="bg-gradient-to-r from-blue-700 via-blue-500 to-indigo-500 hover:from-blue-800 hover:to-indigo-600 text-white font-bold text-lg py-6 px-8 rounded-full transition-transform duration-300 hover:scale-105 shadow-lg">
-                <Download className="mr-2 h-5 w-5" />
-                Download Resume
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="max-w-md bg-card/95 border-primary/30 p-6 flex flex-col items-center">
-              <DialogHeader>
-                <DialogTitle className="font-headline text-2xl text-primary text-center mb-4">Select Resume</DialogTitle>
-              </DialogHeader>
-              <a
-                href="/VIPUL ALL.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full mb-3 px-4 py-3 rounded-lg bg-gradient-to-r from-blue-700 via-blue-500 to-indigo-500 text-white font-bold flex items-center justify-center gap-2 hover:from-blue-800 hover:to-indigo-600 shadow-lg transition relative overflow-hidden"
-                download
-                onClick={handleResumeClick}
-              >
-                <span className="absolute left-2 top-2 animate-pulse text-yellow-300">★</span>
-                <Download className="h-5 w-5" /> Developer Resume
-              </a>
-              <a
-                href="/VIPUL GD.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full px-4 py-3 rounded-lg bg-gradient-to-r from-pink-600 via-fuchsia-500 to-purple-600 text-white font-bold flex items-center justify-center gap-2 hover:from-pink-700 hover:to-purple-700 shadow-lg transition relative overflow-hidden"
-                download
-                onClick={handleResumeClick}
-              >
-                <span className="absolute right-2 top-2 animate-bounce text-yellow-200">★</span>
-                <Download className="h-5 w-5" /> Graphic Designer Resume
-              </a>
-            </DialogContent>
-          </Dialog>
+          <a
+            href="/VIPUL%20GD.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gradient-to-r from-blue-700 via-blue-500 to-indigo-500 hover:from-blue-800 hover:to-indigo-600 text-white font-bold text-base py-3 px-5 rounded-full transition-transform duration-300 hover:scale-105 shadow-lg flex items-center gap-2"
+            onClick={handleResumeClick}
+          >
+            <Download className="mr-2 h-5 w-5" />
+            Download Resume
+          </a>
           <Button
             asChild
             size="lg"
