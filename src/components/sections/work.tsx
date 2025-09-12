@@ -1,6 +1,5 @@
-
-
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { GOOGLE_DRIVE_API_KEY, GOOGLE_DRIVE_FOLDER_ID } from '@/constants/googleDrive';
 import { Folder, Star, Hexagon, Diamond, Heart, Library, LibraryBig, Shapes, FileText, Image as ImageIcon, FileVideo, FileArchive, FileAudio, FileSpreadsheet, Presentation, FileCode, File } from 'lucide-react';
 
@@ -88,19 +87,27 @@ export default function WorkSection() {
               const Icon = folderIcons[idx % folderIcons.length];
               const iconColor = folderIconColors[idx % folderIconColors.length];
               return (
-                <a
-                  key={folder.id}
-                  href={folder.webViewLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-full max-w-xs bg-card/80 border-primary/20 shadow-lg rounded-xl p-5 flex flex-col items-center hover:scale-105 hover:shadow-accent/20 transition-transform duration-300 focus:outline-none mb-4`}
-                >
-                  <div className="mb-4 flex items-center justify-center">
-                    <Icon className={`w-14 h-14 drop-shadow-2xl ${iconColor}`} style={{filter:'drop-shadow(0 4px 16px rgba(0,0,0,0.25))'}} />
+                <Link key={folder.id} href={`/work/${folder.id}`}>
+                  <div
+                    className={`w-full max-w-xs bg-card/80 border-primary/20 shadow-lg rounded-xl p-5 flex flex-col items-center hover:scale-105 hover:shadow-accent/20 transition-transform duration-300 focus:outline-none mb-4`}
+                  >
+                    <div className="mb-4 flex items-center justify-center">
+                      <Icon className={`w-14 h-14 drop-shadow-2xl ${iconColor}`} style={{filter:'drop-shadow(0 4px 16px rgba(0,0,0,0.25))'}} />
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <span className="text-xl font-extrabold text-white text-center mb-1 tracking-wider uppercase drop-shadow-lg font-headline">{folder.name}</span>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open(folder.webViewLink, '_blank', 'noreferrer');
+                        }}
+                        className="text-accent underline opacity-80 font-semibold text-xs"
+                      >
+                        Google Drive Folder
+                      </button>
+                    </div>
                   </div>
-                  <span className="text-xl font-extrabold text-white text-center mb-1 tracking-wider uppercase drop-shadow-lg font-headline">{folder.name}</span>
-                  <span className="block text-xs text-accent underline opacity-80 font-semibold">Google Drive Folder</span>
-                </a>
+                </Link>
               );
             })}
             {filesOnly.map((file, idx) => {
